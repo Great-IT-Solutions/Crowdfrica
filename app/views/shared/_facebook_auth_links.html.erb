@@ -1,0 +1,25 @@
+<div class="modal fade" id="champ-request-modal" tabindex="-1" role="dialog" aria-labelledby="champ-request-modal-label" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title text-center" id="signupModalLabel">Become a Champion</h3>
+      </div>
+      <div class="modal-body row">
+        <p class="text-center">Please log in or sign up with Facebook</p>
+
+        <div class="text-center margin-top-sm">
+          <%= link_to "<span class='facebook-icon margin-right-sm'></i> Sign Up with Facebook".html_safe, donor_facebook_omniauth_authorize_path, class: "btn btn-lg btn-facebook" %>
+        </div>
+        <div class="word-with-line text-center">
+          <span>Or</span>
+        </div>
+        <div class="text-center margin-top-sm">
+          <%= link_to "<span class='facebook-icon margin-right-sm'></i> Login with Facebook".html_safe, donor_facebook_omniauth_authorize_path, class: "btn btn-lg btn-facebook" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

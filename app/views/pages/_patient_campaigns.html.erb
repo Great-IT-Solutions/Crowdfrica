@@ -1,0 +1,10 @@
+<section class="Patients-cards">
+  <% if patients.any? %>
+  <div class="container Box">
+    <h3 class="category"> Patients </h3>
+    <% patients.each do |patient_campaign| %>
+      <%= render 'campaigns/card', obj: patient_campaign %>
+    <% end %>
+  </div>
+  <% end %>
+</section>

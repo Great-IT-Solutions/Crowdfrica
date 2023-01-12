@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title><%= page_title(yield(:title)) %></title>
+    <%= csrf_meta_tags %>
+    <%= stylesheet_link_tag 'application', media: 'all' %>
+    <%= javascript_include_tag 'admin' %>
+    <%= javascript_pack_tag 'admin' %>
+    <link rel="stylesheet" type="text/css" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+    <link rel="stylesheet" type="text/css"
+    href="https://fonts.googleapis.com/css?family=Noto+Sans:400,700|Open+Sans|Ubuntu:400,700|Droid+Sans">
+  </head>
+  <body class="admin">
+    <nav class="pull-right">
+      <%= link_to('Sign out', destroy_admin_user_session_path, method: :delete) if admin_user_signed_in? %>
+    </nav>
+    <%= render 'admin/shared/admin_menu' if admin_user_signed_in? %>
+
+    <div class="contain">
+      <%= render 'layouts/admin/flash' %>
+      <%= yield %>
+    </div>
+
+  </body>
+</html>

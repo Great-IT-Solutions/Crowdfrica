@@ -1,0 +1,102 @@
+// Place all the styles related to the Championships controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.donor-img {
+  border-radius: 50%;
+  vertical-align: initial;
+}
+
+.champ-title {
+  text-align: center;
+    margin-top: 0;
+    margin-bottom: 15px;
+    font-size: 1.4em;
+}
+
+.champ-details {
+  display: inline-block;
+  position: relative;
+  .champ-tooltip {
+    position: absolute;
+    z-index: 99999;
+    top: -220%;
+    left: 30%;
+    background-color: white;
+    padding: 10px 20px;
+    display: none;
+    white-space: nowrap;
+    border-radius: 5px;
+    border: 1px solid #ddd;
+    h4 {
+      font-size: 1.2em;
+      text-align: center;
+    }
+  }
+  #champ-name {
+    margin-bottom: 5px;
+    font-size: 18px;
+  }
+}
+.champ-details:hover {
+  .champ-tooltip {
+    display:block;
+
+  }
+}
+.champ-control-btns {
+  display: inline-block;
+  padding: 10px;
+  background-color: #fff;
+  color: #ff5103;
+  text-align: center;
+  width: 190px;
+  border: 1px solid #ff5103;
+  border-radius: 5px;
+  text-decoration: none;
+  margin-bottom: 10px;
+}
+.center-champ-btns{
+  width: 100%;
+}
+.edit_championship_request, .new_championship  {
+  display: inline-block;
+}
+.champ-index {
+  padding: 15px 15px;
+  margin: 20px 5%;
+  border: 1px solid gray;
+  border-radius: 5px;
+}
+.rel-input {
+  max-width: 189px;
+}
+.champ-text-area {
+  height: 45px;
+}
+.champ_img_container {
+  //work in progress to mkae image larger
+  height: 80px;
+  width: 80px;
+  display: inline-block;
+  line-height: 80px;
+  font-size: 40px;
+  margin:0 10px 10px 0;
+}
+.champ-index-titles {
+  text-align: center;
+  margin-top: 30px;
+}
+.champ-profile-intro {
+  padding: 10px;
+}
+.verified-tick {
+  border: 1px solid #ff5103;
+  border-radius: 50%;
+  padding: 3px;
+  font-size: 12px;
+  vertical-align: top;
+}
+.verified-tick-main {
+  color: white;
+  background-color: #ff5103;
+}

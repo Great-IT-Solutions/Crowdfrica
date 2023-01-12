@@ -1,0 +1,55 @@
+<div data-controller="tip">
+  <div class="form-group col-md-12">
+    <h4>
+      <strong>Confirm donation amount $</strong>
+    </h4>
+
+    <%= text_field_tag "#{payment_method}[amount]",
+                       amount,
+                       data: {controller: 'numeric-input', target: "tip.amount", action: 'keyup->tip#updateValues keypress->numeric-input#check'},
+                       placeholder: 'Amount',
+                       class: "form-control row col-md-12"
+    %>
+  </div>
+
+  <div class="form-group col-md-12 radio">
+    <h4>
+      <strong>Include a tip to support Crowdfrica</strong>
+    </h4>
+
+    <%= hidden_field_tag "#{payment_method}[tip]", 0, data: {target: "tip.hiddenInput"} %>
+
+    <span class="radio-inline">
+      <%= radio_button_tag "#{payment_method}_tip", 0, true, data: {target: 'tip.radio', action: 'tip#toggleCustomInput tip#updateHiddenInput'} %>
+      <%= label_tag "#{payment_method}_tip_0", 'No tip', style: 'padding-left: 5px' %>
+    </span>
+    <span class="radio-inline">
+      <%= radio_button_tag "#{payment_method}_tip", 5, false, data: {target: 'tip.radio', action: 'tip#toggleCustomInput tip#updateHiddenInput', percentage: 5} %>
+      <%= label_tag "#{payment_method}_tip_5", '$ 5', style: 'padding-left: 5px' %>
+    </span>
+    <span class="radio-inline">
+      <%= radio_button_tag "#{payment_method}_tip", 10, false, data: {target: 'tip.radio', action: 'tip#toggleCustomInput tip#updateHiddenInput', percentage: 10} %>
+      <%= label_tag "#{payment_method}_tip_10", '$ 10', style: 'padding-left: 5px' %>
+    </span>
+    <span class="radio-inline">
+      <%= radio_button_tag "#{payment_method}_tip", 15, false, data: {target: 'tip.radio', action: 'tip#toggleCustomInput tip#updateHiddenInput', percentage: 15} %>
+      <%= label_tag "#{payment_method}_tip_15", '$ 15', style: 'padding-left: 5px' %>
+    </span>
+    <span class="radio-inline">
+      <%= radio_button_tag "#{payment_method}_tip", :custom, false, data: {target: 'tip.customRadio', action: 'tip#toggleCustomInput'} %>
+      <%= label_tag "#{payment_method}_tip_custom", 'Custom tip amount', style: 'padding-left: 5px' %>
+    </span>
+  </div>
+
+  <div class="form-group col-md-12">
+    <div class="col-md-8">
+      <%= number_field_tag "#{payment_method}_custom_tip_amount",
+                 '',
+                 data: {target: 'tip.customInput', action: 'tip#updateHiddenInput'},
+                 class: 'form-control',
+                 placeholder: 'Custom tip amount',
+                 style: "display: none"
+      %>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,28 @@
+<% provide(:title, "Manage Blog Posts") %>
+<div class="blog-posts">
+  <li><%= link_to 'New Blog Post', new_admin_blog_post_path  %> </li>
+  <h2>All Posts</h2>
+  <table class="table text-left">
+    <thead>
+      <tr>
+        <th class="text-left"scope="col">Title</th>
+        <th class="text-left"scope="col">Date Created</th>
+        <th class="text-left"scope="col">Author</th>
+        <th class="text-left"scope="col"></th>
+        <th class="text-left"scope="col"></th>
+      </tr>
+    </thead>
+    <tbody>
+      <% @posts.each do |post| %>
+        <tr>
+          <td><%= link_to "#{post.title}", blog_post_path(post) %></td>
+          <td><%= post.created_at %></td>
+          <td><%= post.author.fullname %></td>
+          <td><%= link_to "Edit", edit_admin_blog_post_path(post) %></td>
+          <td><%= link_to "Delete", admin_blog_post_path(post), method: :delete, data: {confirm: "Are you sure?"} %></td>
+        </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= will_paginate @posts, renderer: BootstrapPagination::Rails, previous_label: "Previous", next_label: "Next" %>
+</div>

@@ -1,0 +1,23 @@
+
+<% provide(:title, "Campaigns") %>
+<div  class="container">
+	<div class="row">
+	  <% if @campaigns.any? %>
+	    <h1 class="text-center margin-bottom-md">Campaigns</h1>
+			<div class="row text-center margin-bottom-md">
+				<div class="col-sm-4 ">
+					<%= link_to 'Patients', category_projects_path('patients') %>
+				</div>
+				<div class="col-sm-4">
+					<%= link_to 'Classroom projects', category_projects_path('classroom-supplies') %>
+				</div>
+			</div>
+			<% @campaigns.each do |campaign| %>
+				<%= render 'campaigns/card', obj: campaign %>
+			<% end %>
+	  <% end %>
+  </div>
+  <div  class="paginate">
+    <%= will_paginate @campaigns, renderer: BootstrapPagination::Rails, previous_label: "Previous", next_label: "Next" %>
+  </div>
+</div>

@@ -1,0 +1,376 @@
+<% provide(:title, @campaign.project.project_name) %>
+<% meta_tag :title, @campaign.project.project_name %>
+<% meta_tag :url, request.url %>
+<% meta_tag :description, ActionView::Base.full_sanitizer.sanitize(@campaign.project.project_description.body.html_safe) if @campaign.project.project_description&.body? %>
+<% meta_tag :image, asset_url(@campaign.campaign_image_url) %>
+
+<% if current_donor && current_donor.provider == "facebook" %>
+  <%= render "shared/champ_request" %>
+<% else %>
+  <%= render "shared/facebook_auth_links" %>
+<% end %>
+
+<div class="campaign-show container-fluid">
+  <div class="container">
+    <div class="row">
+      <div class="col-md-12">
+        <h3 class="title"> <%= @campaign.project.project_name %></h3>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-8 col-md-12 col-sm-12 white-box padding-reset margin-top-sm">
+        <% if @campaign.campaign_video_url.present? %>
+        <center>
+          <iframe width="780" height="520" src='https://www.youtube.com/embed/<%= @campaign.campaign_video_url %>?rel=0&autoplay=<%= params[:autoplay] || 0 %>' frameborder='0' allowfullscreen></iframe>
+        </center>
+        <% else %>
+          <div class="campaign-img-holder">
+            <% if @campaign.campaign_image_url.present? %>
+              <%= image_tag(@campaign.campaign_image_url, class: "img-responsive") %>
+            <% else %>
+              <div class="default-image">
+                <%= image_tag("logo.png") %>
+                <h3>Crowdfrica</h3>
+              </div>
+            <% end %>
+          </div>
+        <% end %>
+      </div>
+      <div class="col-lg-4 col-md-12 col-sm-12 margin-top-sm">
+        <div class="white-box side-bar">
+          <a data-controller="social" data-action="social#openFacebookBox" data-url="<%= facebook_url(@campaign) %>" class="btn btn-facebook-wide btn-lg btn-block">
+            <%= image_tag "f_logo_RGB-White_58.png", class: "facebook-icon-small margin-right-sm" %> Share story
+          </a>
+          <% if @campaign.progress >= 100 %>
+            <h3 class="text-left">Fully Funded</h3>
+            <h2 class="text-left"><%= number_to_currency(@campaign.total_amount_donated) %></h2>
+            <h5 class="text-left margin-top-sm"><span class="grey">raised</span></h5>
+            <div class="progress-card">
+              <div class="progress-bar progress-bar-success" role="progressbar" aria-valuenow="100" aria-valuemin="0" aria-valuemax="100" style="width:100%"></div>
+            </div>
+          <% else %>
+            <div data-controller="progress-bar campaign"
+                 data-progress-bar-progress="<%= @campaign.progress %>"
+                 data-progress-bar-current-value="<%= @campaign.total_amount_donated %>"
+                 data-progress-bar-expected-value="<%= @campaign.cost %>"
+                 data-campaign-donation-url="<%= new_donation_path(@campaign) %>">
+
+              <h2 class="text-left"><%= number_to_currency(@campaign.total_amount_donated) %></h2>
+              <h5 class="text-left margin-top-sm">
+                <span class="grey">raised of </span>
+                <strong><%= number_to_currency(@campaign.project.cost) %></strong>
+                <span class="grey"> goal </span>
+              </h5>
+              
+              <input class='campaignProgress' type="hidden" value=<%= @campaign.progress %>>
+              <div class="progress-card">
+                <div class="progress-bar progress-bar-warning"
+                     data-target="progress-bar.progressBar"
+                     role="progressbar"
+                     aria-valuenow="<%= @campaign.progress %>"
+                     aria-valuemin="0"
+                     aria-valuemax="100"
+                >
+                </div>
+              </div>
+
+              <div class="text-left">
+                <input class="btn btn-default margin-right-sm" type="button" value="$ 25" data-amount="25" data-action="click->campaign#setAmount">
+                <input class="btn btn-default margin-right-sm" type="button" value="$ 50" data-amount="50" data-action="click->campaign#setAmount">
+                <input class="btn btn-default" type="button" value="$ 100" data-amount="100" data-action="click->campaign#setAmount">
+              </div>
+
+              <div class="row padding-reset">
+                <div class="input-group donation-text-box margin-top-sm col-lg-12">
+                  <span class="dollar-icon"><i class="fa fa-dollar fa-lg"></i> </span>
+                  <input id='amount'
+                         data-controller="numeric-input"
+                         data-target="campaign.amountInput"
+                         data-action="input->progress-bar#update keypress->numeric-input#check"
+                         class='form-control'
+                         type='text'
+                         autocomplete="off"
+                         min="0"
+                         maxlength="6"
+                         autofocus=true
+                         placeholder='Enter any amount'
+                         pattern="\d*"
+                    />
+                  <div class="input-group-btn margin-top-sm">
+                    <input id="cam-dn-btn"
+                           type="submit"
+                           data-action="campaign#redirectToDonation"
+                           class='btn btn-success'
+                           value="Donate Now"
+                           data-toggle='popover'
+                           data-content="Minimum donation is $2"
+                           data-placement="top"
+                           data-campaign-id=<%= @campaign.id %>
+                    >                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                                            
+                  </div>
+                </div>
+              </div>
+            </div>
+          <% end %>
+
+          <div class="Donors text-left white-box side-bar margin-top-md">
+            <div class="USSD">
+              <h4> <b>MoMo (USSD)</b></h4>
+                <p>
+                 Dial
+                  <span class="crwd-text-color"><b>*789*11#</b></span>  on your phone.<br>
+                 Enter campaign code <span class="crwd-text-color"><b><%= @campaign.id %></b></span> and proceed to donate with any network.
+                 <hr>
+                 Quick dial <span class="crwd-text-color"><b>*789*11*<%= @campaign.id %>#</b></span>
+                </p>
+            </div>
+          </div>
+          <div class="row margin-top-md">
+            <div class="col-lg-12 col-md-12 col-sm-12">
+              <div class="visible-lg visible-md">
+                <%= render partial: "shared/social_links", locals: {campaign: @campaign} %>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="row margin-bottom-md">
+      <div class="col-lg-8 col-md-8 col-sm-12">
+        <nav class="crwd-nav">
+          <ul data-controller="tabs" class="nav nav-pills" role="tablist">
+            <li role="presentation" class="active">
+              <a href="#story" role="tab" data-toggle="pill" data-action="tabs#show"><i class="fa fa-book"></i> Story</a>
+            </li>
+          </ul>
+        </nav>
+        <div class="tab-content">
+          <div id="story" role="tabpanel" class="campaign_story tab-pane active">
+            <% if @campaign.is_for_patient? && @campaign.is_health_insurance? %>
+              <h3 class="story"> <%= "#{@campaign.first_name_of_patient}'s story " %> </h3>
+              <div class='description'>
+                <p class="project_story">
+                  <%= @campaign.project.project_description %>
+                  <%= render partial: "videos" %>
+                </p>
+              </div>
+
+              <div class="table-responsive">
+                <table class="table table table-condensed table-hover">
+                  <thead>
+                  <tr>
+                    <th class="th-exception">Cost Description</th>
+                    <th>Cost</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr class="tr-ex">
+                    <td>Year One</td>
+                    <td align="center"><%= number_to_currency(@campaign.project.year_cost) %> </td>
+                  </tr>
+                  <tr>
+                    <td>Renewal</td>
+                    <td align="center"><%= number_to_currency(@campaign.project.renewal) %> </td>
+                  </tr>
+                  <tr>
+                    <td>Payment Processing
+                      <span class="glyphicon glyphicon-question-sign" title="Payment Processing Fees"
+                            data-content="To highly secure payments on crowdfrica, we use 3rd party Payment processing platforms like stripe and hubtel(Mpower).
+
+                       Crowdfrica pays an industry-standard processing charge of about 2.5%.
+                       Bank transfers and check donations also incur a handling and processing fees."
+                            data-trigger="hover"
+                            data-placement="top"
+                            data-toggle="popover"></span>
+                    </td>
+                    <td align="center"><%= number_to_currency(@campaign.project.processing) %> </td>
+                  </tr>
+                  <tr>
+                    <td class="">Fulfilment (labor & materials) cost
+                      <span class="glyphicon glyphicon-question-sign" title="Operational cost"
+                            data-content="Crowdfrica visits villages and vets each person and family and directly learn about them before  posting them for donor-funding, coordinating with NHISA, registering them, taking photos and processing receipts for donors. These villages are hard-to-reach with no network so we transpot all beneficiaries to closest NHISA or village.
+
+
+                          This cost does not only cover the cost of labor required to give someone access to free healthcare, but the cost of transportation, snacks, processing receipts and taking photos for donor updates"
+                            data-trigger="hover"
+                            data-placement="down"
+                            data-toggle="popover"></span>
+                    </td>
+                    <td align="center"><%= number_to_currency(@campaign.project.operational_costs) %> </td>
+                  </tr>
+
+                  <tr>
+
+                    <td class="active">Total
+                      <span class="glyphicon glyphicon-question-sign" title="Total"
+                            data-content="This is our goal! The total amount needed to help provide someone a health insurance"
+                            data-trigger="hover"
+                            data-placement="down"
+                            data-toggle="popover"></span>
+                    </td>
+
+                    <td align="center" class="active"><%= number_to_currency(@campaign.project.cost) %> </td>
+                  </tr>
+                  </tbody>
+                </table>
+              </div>
+            <% else %>
+              <h3 class="story"> <%= "#{@campaign.first_name_of_patient}'s story " %> </h3>
+              <div class='description'>
+                <p class="project_story">
+                  <%= @campaign.project.project_description %>
+                </p>
+                <%= render partial: "videos" %>
+              </div>
+              <div class="table-responsive">
+                <table class="table table table-condensed table-hover">
+                  <thead>
+                  <tr>
+                    <th class="text-left">Cost Description</th>
+                    <th class="text-right">Cost</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <% if @campaign.is_for_patient? %>
+                    <tr>
+                      <td> Goal</td>
+                      <td class="text-right"><%= number_to_currency(@campaign.project.medical_cost) %> </td>
+                    </tr>
+                    <tr>
+                      <td>Payment Processing</td>
+                      <td class="text-right"><%= number_to_currency(@campaign.project.processing) %> </td>
+                    </tr>
+                    <tr>
+                      <td>Operational Cost</td>
+                      <td class="text-right"><%= number_to_currency(@campaign.project.operational_costs) %> </td>
+                    </tr>
+                    <tr>
+                      <td class="active">Total</td>
+                      <td class="active text-right"><%= number_to_currency(@campaign.project.cost) %> </td>
+                    </tr>
+                  <% else %>
+                    <tr>
+                      <td> Supply Cost</td>
+                      <td><%= number_to_currency(@campaign.project.equipment_cost) %> </td>
+                    </tr>
+                    <tr>
+                      <td>Payment Processing</td>
+                      <td><%= number_to_currency(@campaign.project.processing) %> </td>
+                    </tr>
+                    <tr>
+                      <td>Fulfilment Cost</td>
+                      <td><%= number_to_currency(@campaign.project.operational_costs) %> </td>
+                    </tr>
+                    <tr>
+                      <td class="active">Total</td>
+                      <td class="active"><%= number_to_currency(@campaign.project.cost) %> </td>
+                    </tr>
+                  <% end %>
+                  </tbody>
+                </table>
+              </div>
+            <% end %>
+
+            <h4 class="margin-top-sm">Share <%= "#{@campaign.first_name_of_patient}'s story" %> </h4>
+            <div data-controller="social" class="row margin-bottom-md">
+              <div class="social-link">
+                <a data-action="social#openFacebookBox" data-url="<%= facebook_url(@campaign) %>" class="btn btn-facebook-wide">
+                  <%= image_tag "f_logo_RGB-White_58.png", class: "facebook-icon-smaller margin-right-sm" %> Share
+                </a>
+              </div>
+              <div class="social-link">
+                <%= link_to "https://api.whatsapp.com/send?text=#{request.original_url}", target: "_blank", class: "btn btn-whatsapp-wide" do %>
+                  <i class="fa fa-whatsapp margin-right-sm"></i><span> Share</span>
+                <% end %>
+              </div>
+              <div class="social-link">
+                <a data-action="social#openTwitterBox" data-url="<%= twitter_url(@campaign) %>" class="btn btn-twitter-wide">
+                  <i class="fa fa-twitter margin-right-sm"></i> Share
+                </a>
+              </div>
+              <% unless @campaign.progress >= 100 %>
+                <%= link_to "Donate Now", new_donation_path(@campaign), class: "btn btn-crwd-primary pull-right btn-donate" %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="col-lg-4 col-md-4 col-sm-12 margin-top-sm">
+        <div class="Donors text-left white-box side-bar margin-top-md">
+          <% if @championship %>
+            <h3 class="champ-title"> <%= @campaign.first_name_of_patient %>'s Champion</h3>
+            <% if @championship.champion.profile_image? %>
+              <div class="avatar_container round-icon profile_48x48">
+                <%= link_to donor_path(@championship.champion) do %>
+                  <%= image_tag(@championship.champion.image, class: "donor-img") %>
+                <% end %>
+              </div>
+            <% else %>
+              <%= link_to donor_path(@championship.champion), class: "alink", title: @championship.champion.fullname do %>
+                <div class="avatar_container profile_48x48">
+                  <div class="avatar round-icon" style=<%= "background-color:#{@championship.champion.color};" %>><%= @championship.champion.initials %> </div>
+                </div>
+              <% end %>
+            <% end %>
+            <div class="champ-details">
+              <div class="champ-tooltip">
+                <h4>Verified User</h4>
+                <% if @championship.champion.provider == "facebook" %>
+                  <p>Facebook Verified <span class="verified-tick glyphicon glyphicon-ok"></span></p>
+                <% end %>
+                <p>Crowdfrica Verified <span class="verified-tick glyphicon glyphicon-ok"></span></p>
+              </div>
+              <p id="champ-name"><%= link_to @championship.champion.fullname, donor_path(@championship.champion) %>
+                <span class="verified-tick glyphicon glyphicon-ok verified-tick-main"></span></p>
+              <p id="champ-relationship"><%= @championship.relationship %></p>
+            </div>
+            <p id="champ-message"><%= @championship.message %></p>
+          <% else %>
+            <% if current_donor && current_donor.championship == nil %>
+              <a href="#" data-toggle="modal" data-target="#champ-request-modal" id="champ-request">Become <%= @campaign.first_name_of_patient %>
+                's Champion</a>
+              <p><%= @campaign.first_name_of_patient %> needs someone to champion their campaign. If you
+                know <%= @campaign.first_name_of_patient %> or
+                you want to help promote <%= @campaign.first_name_of_patient %>'s campaign, please request to
+                <a href="#" data-toggle="modal" data-target="#champ-request-modal" id="champ-request">become their
+                  Champion.</a>
+              </p>
+            <% elsif !current_donor %>
+              <a href="#" data-toggle="modal" data-target="#champ-request-modal" id="champ-request">Become <%= @campaign.first_name_of_patient %>
+                's Champion</a>
+              <p><%= @campaign.first_name_of_patient %> needs someone to champion their campaign. If you
+                know <%= @campaign.first_name_of_patient %> or
+                or you want to help promote <%= @campaign.first_name_of_patient %>'s campaign, please request to
+                <a href="#" data-toggle="modal" data-target="#champ-request-modal" id="champ-request">become their
+                  Champion.</a>
+              </p>
+            <% else %>
+              <p><%= @campaign.first_name_of_patient %> needs someone to champion their campaign. If you know anyone who
+                could become <%= @campaign.first_name_of_patient %>'s Champion, please get in touch.</p>
+            <% end %>
+          <% end %>
+        </div>
+
+        <div class="Donors text-left white-box side-bar margin-top-md">
+          <% case @campaign.donors_distinct_count %>
+          <% when 0 %>
+            <h4>No donor has reached out to <%= @campaign.first_name_of_patient %> yet, be the first </h4>
+          <% when 1 %>
+            <h4><%= pluralize(@campaign.donors_distinct_count, "Donor") %> has reached out
+              to <%= @campaign.first_name_of_patient %> </h4>
+          <% else %>
+            <h4><%= pluralize(@campaign.donors_distinct_count, "Donor") %> have reached out
+              to <%= @campaign.first_name_of_patient %> </h4>
+          <% end %>
+
+          <div class="avatar-wrap donor-list donors" id="donors">
+            <%== render partial: 'donors', locals: { donors: @total_donors } %>
+          </div>
+          
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

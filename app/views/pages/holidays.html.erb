@@ -1,0 +1,62 @@
+<% provide(:title, "Welcome") %>
+<header class="holiday_slide">
+    <div class="hero transparency-black">
+     
+        <div class="container container-md text-center">
+          <h1>Health is Life.<br>This Holiday season, give a</h1>
+                  <br>
+          
+          <ul class="list-inline text-center">
+            <li>
+              <%=link_to "Gift of Life", campaign_path(@holiday), class:"btn btn-lg btn-success" if ! @holiday.nil?%>
+            </li>
+      
+          </ul>
+
+        </div>
+    </div>
+</header>
+
+
+<div class="secondLayer">
+     <div class="row">
+	    <div class="col-xs-12 col-md-12 main">
+           <span>The best and efficient holiday gift is here!</span>
+			<h4>This holiday season, we are making it for you to give a Gift of Life to your lovely friends and family anywhere! It comes with a beautiful custom printable card. 100% of your GIft of Life donations goes to fund national health insurance for people in need.</h4>
+		</div>
+    </div>
+</div>
+
+<div class="row row-centered">
+		<div class="col-sm-8 col-centered" >
+			<div class="embed-responsive embed-responsive-16by9">
+  			<iframe class="embed-responsive-item" src="//www.youtube.com/embed/0fH41ZDYPQs"></iframe>
+  			</div>
+  		</div>		
+</div>
+
+
+<div class="container">
+<div class="giftcard">
+	<div class="row">
+		
+	<div class="col-sm-7">
+	 	<div class="ourstoryImg2">
+	 		<%= image_tag "holiCampaign.png" %>
+	 	</div>
+	 </div>
+
+	<div class="col-sm-5">  			
+	<div class="oursteamText">
+	    
+	   	<p>
+            <h4>This holiday season, we are making it for you to give a Gift of Life to your lovely friends and family anywhere! It comes with a beautiful custom printable card.</h4>
+	   	</p>  
+	   	 <%=link_to "Gift of Life", campaign_path(@holiday), class:"btn btn-lg btn-success" if ! @holiday.nil?%> 	
+	</div>
+	</div>
+	</div>
+</div>	
+</div>
+
+

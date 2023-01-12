@@ -1,0 +1,57 @@
+<% provide(:title, @campaign.project.project_name) %>
+<div class="container">
+  <div class="col-xs-12 col-sm-12 col-md-6 profile">
+    <div class="first">
+      <%= image_tag(@campaign.campaign_image_url) %>
+    </div>
+  </div >
+  <div class="col-xs-12 col-sm-12 col-md-6 GiftPay" data-controller="gift-card">
+    <p data-action="click->gift-card#toggle" class="gift_donate_text">
+      <strong>Click here to Donate using gift code</strong>
+    </p>
+    <%= form_for :giftcard_donation, url: {action: 'gift_card_payment'}, data: {target: 'gift-card.form'}, html: {style: 'display: none;'} do |f|%>
+      <%= hidden_field_tag :campaign_id, @campaign.slug %>
+      <%= f.hidden_field :amount, value: params[:amount]%>
+      <% unless donor_is_registered? %>
+        <div>
+          <%= f.text_field :fullname, placeholder: 'Full Name', required: true %>
+          <%= f.email_field :email,  placeholder: 'Email', required: true %>
+        </div>
+      <% end %>
+      <div style="display: flex; align-items: center; justify-content: center; margin: 10px;">
+        <%= f.text_field :giftcode, placeholder: 'Enter gift code', required: true, style: 'margin-right: 10px;' %>
+        <%= f.submit "Apply & Donate", class:"btn btn-success" %>
+      </div>
+    <% end %>
+  </div>
+
+  <div class="col-xs-12 col-sm-12 col-md-6 profile">
+    <section class="second">
+      <div data-controller="payment-selector" class="container second">
+        <ul class="nav nav-tabs">
+          <li>
+            <%= radio_button_tag :payment_option, :mobile_money, true, class: 'payment_option_radio', data: {target: 'payment-selector.radioButton', action: 'payment-selector#select', form_id: 'mobileMoney'} %>
+            <%= label_tag :payment_option_mobile_money, 'Mobile Money (Ghananians)', class: 'payment_option_label' %>
+          </li>
+          <li>
+          <%#<%= radio_button_tag :payment_option, :credit_card, false, class: 'payment_option_radio', data: {target: 'payment-selector.radioButton', action: 'payment-selector#select', form_id: 'squareUp'} %>
+          <%# <%= label_tag :payment_option_credit_card, 'Credit card', class: 'payment_option_label' %>
+          </li>
+          <li>
+            <%= radio_button_tag :payment_option, :paypal, false, class: 'payment_option_radio', data: {target: 'payment-selector.radioButton', action: 'payment-selector#select', form_id: 'paypal'} %>
+            <%= label_tag :payment_option_paypal, 'PayPal/Cards (Int.)', class: 'payment_option_label' %>
+          </li>
+        </ul>
+        <div class="tab-content">
+          <%= render partial: 'mobile_money_payment', locals: {amount: params[:amount], campaign: @campaign} %>
+          <%= render partial: 'square_up_payment', locals: {amount: params[:amount], campaign: @campaign} %>
+          <%= render partial: 'paypal_payment', locals: {amount: params[:amount], campaign: @campaign} %>
+
+          <div class="imgAdvisors">
+              <%= inline_svg_tag "secured.svg", class: 'secured', my_custom_attribute: 'secured options' %> <div class="secured_text">Secured payment.</div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>

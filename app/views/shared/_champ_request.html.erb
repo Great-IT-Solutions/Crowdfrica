@@ -1,0 +1,37 @@
+<div class="modal fade" id="champ-request-modal" tabindex="-1" role="dialog" aria-labelledby="signupModalLabel" aria-hidden="true">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+        <h3 class="modal-title text-center" id="signupModalLabel">Become a Champion</h3>
+      </div>
+      <div class="modal-body row">
+        <div class="col-lg-offset-1 col-md-offset-1 col-lg-10 col-md-10 col-sm-12">
+          <p class="text-center">Please let us know who you are and how you could help raise funds or
+            promote <%= @campaign.first_name_of_patient %>'s campaign</p>
+          <%= form_for [@campaign, ChampionshipRequest.new] do |f| %>
+            <div class="col-lg-12 col-md-12 col-sm-12 padding-reset">
+              <div class="form-group margin-top-sm  padding-reset">
+                <%= f.label :relationship_to_beneficiary %><br/>
+                <%= f.select :relationship, ["Father", "Mother", "Grandparent", "Aunt", "Uncle", "Cousin", "Brother", "Sister", "Family", "Friend", "Colleague", "Carer", "Supporter"], {selected: "Supporter"}, {class: "form-control"} %>
+              </div>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 padding-reset form-group margin-top-sm">
+              <%= f.label :why_do_you_want_to_champion_this_campaign? %><br/>
+              <%= f.text_area :reason, autofocus: true, required: true, class: "form-control", rows: "3", placeholder: "I want to help this campaign because..." %>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 padding-reset form-group margin-top-sm">
+              <%= f.label :please_write_a_message_which_will_persuade_people_to_donate %><br/>
+              <%= f.text_area :message, autofocus: true, required: true, class: "form-control", rows: "3", placeholder: "e.g Please help us to ..." %>
+            </div>
+            <div class="col-lg-12 col-md-12 col-sm-12 padding-reset form-group form-group margin-top-sm">
+              <%= f.submit "Send Request", class: "btn btn-crwd-primary" %>
+            </div>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

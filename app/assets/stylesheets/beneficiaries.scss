@@ -1,0 +1,27 @@
+
+
+.donateBox {
+	margin-bottom: 10px;
+	/*border: 1px solid green;*/
+	position:relative;
+	vertical-align: middle;
+  	white-space: nowrap;
+	input[type="submit"] {
+        height: 40px;
+	    background-color: green;
+	    border-right: 0px;
+	    border-radius: 0px;
+	    width: 40%;
+        outline: none;
+	}
+	input[type="text"] {
+		width: 60%;
+	    height: 40px;
+	    padding-right: 50px;
+	    float: left;
+	    border: 1px solid green;
+	    border-radius: 0px;
+	}
+
+}
+

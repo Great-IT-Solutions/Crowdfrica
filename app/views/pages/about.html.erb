@@ -1,0 +1,299 @@
+<% provide(:title, "About") %>
+<%= render "shared/vision" %>
+<header class="row subnav about-nav">
+  <ul class="nav">
+    <li class="col-sm-4 active"><a data-toggle="tab" href="#about">About</a></li>
+    <li class="col-sm-4"><a data-toggle="tab" href="#our-team">Our Team</a></li>
+    <li class="col-sm-4"><a data-toggle="tab" href="#partners">Partners</a></li>
+  </ul>
+</header>
+<section class="tab-content">
+  <div class="container tab-pane fade in active" id="about">
+    <div class="row">
+      <div class="The_Team">
+        <div class="team-text">
+          <div>
+            "We are connecting people to finance access to healthcare and quality education and entrepreneurship in Africa.
+            " --Mission.
+          </div>
+        </div>
+      </div>
+      <section class="story-sect">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 story-abt">
+            </div>
+            <div class="col-md-6 story-abt-text">
+              <h2><b>Our Story</b></h2>
+              <div class="story-abt-text2">
+                Randy, the founder of Crowdfrica was in his room when his mom came to him asking for GHS 20.00 ($5) to take his brother to get healthcare. He had no money on him and so he was unable to offer any. A week later, his brother died leaving them in shock and distraught. Knowing that he could not help his brother got him thinking that this could be happening to someone else. After he visited neighbouring villages, spoke to nurses and community members about the challenges of healthcare in Ghana, Crowdfrica was born with the focus of solving the healthcare challenge in Ghana and hopefully expand to the other African countries.
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <div class="The_Team">
+        <div class="team-text">
+          <div>
+            "Individual commitment to a group effort - that is what makes a team work, a company work, a society work, a civilization work."--Vince Lombardi.
+          </div>
+        </div>
+      </div>
+      <section class="story-sect">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 story-abt-team">
+              <h2><b>The Team</b></h2>
+              <div class="story-abt-team2">
+                We are a small team of Avengers with a big dream. We are connecting the world to help provide healthcare and quality education in Africa. We work directly with community leaders.
+              </div>
+            </div>
+            <div class="col-md-6 story-abt2">
+            </div>
+          </div>
+        </div>
+      </section>
+      <section class="OurValues">
+        <div class="container">
+          <h2 class="section-title"><b>Our Values</b></h2>
+          <div class="row">
+            <div class="Values">
+              <div class="col-md-3 Family">
+                <h2><b>Family</b></h2>
+              </div>
+              <div class="col-md-3 col-md-offset-3 Compasion">
+                <h2><b>Compassion</b></h2>
+              </div>
+              <div class="col-md-3 col-md-offset-3 Transparency">
+                <h2><b> Transparency</b></h2>
+              </div>
+              <div class="col-md-3 col-md-offset-3 Innovation">
+                <h2><b>Innovation</b></h2>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+      <%= render "shared/how_it_works" %>
+      <%= render "shared/our_values" %>
+    </div>
+  </div>
+  <div class="container tab-pane fade" id="our-team">
+    <div class="row">
+      <div class="The_Team">
+        <div class="team-text">
+          <div>"Individual commitment to a group effort - that is what makes a team work, a company work, a society work, a civilization work."----Vince Lombardi.</div>
+        </div>
+      </div>
+      <div class="team-pics">
+        <h2> Meet The Team</h2>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="imgAdvisors">
+              <%= image_tag 'Randy_Caiquo.png', :class => "img-circle" %>
+            </div>
+            <div class="Advisors-title">
+              <h3><%= link_to "Randy Caiquo", "https://www.linkedin.com/in/rcaiquo/", :target => "_blank" %></h3>
+            </div>
+            <div class="Advisors-brief">
+              <p>Founder & CEO</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="imgAdvisors">
+              <%= image_tag 'elizabeth.png', :class => "img-circle" %>
+            </div>
+            <div class="Advisors-title">
+              <h3><%= link_to "Elizabeth Dzah", "linkedin.com/in/elizabethdzah", :target => "_blank" %></h3>
+            </div>
+            <div class="Advisors-brief">
+              <p>Operations</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="imgAdvisors">
+              <%= image_tag 'mohan.jpg', :class => "img-circle" %>
+            </div>
+            <div class="Advisors-title">
+              <h3><%= link_to "Mohan Pichikala", "https://github.com/mohan589", :target => "_blank" %></h3>
+            </div>
+            <div class="Advisors-brief">
+              <p>Volunteer, Developer</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="imgAdvisors">
+              <%= image_tag 'renu.jpg', :class => "img-circle" %>
+            </div>
+            <div class="Advisors-title">
+              <h3><%= link_to "Saraswathy Renuga S", "https://www.linkedin.com/in/saraswathy-renuga", :target => "_blank" %></h3>
+            </div>
+            <div class="Advisors-brief">
+              <p>Volunteer, Developer</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="imgAdvisors">
+              <%= image_tag 'younes.jpg', :class => "img-circle" %>
+            </div>
+            <div class="Advisors-title">
+              <h3><%= link_to "Younes el Boraki", "https://www.linkedin.com/in/younes-el-boraki-3a73091a3", :target => "_blank" %></h3>
+            </div>
+            <div class="Advisors-brief">
+              <p>Volunteer, Developer</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="imgAdvisors">
+              <%= image_tag 'jolyon.png', :class => "img-circle" %>
+            </div>
+            <div class="Advisors-title">
+              <h3><%= link_to "Jolyon Pawlyn", "https://www.linkedin.com/in/jpawlyn/", :target => "_blank" %></h3>
+            </div>
+            <div class="Advisors-brief">
+              <p>Volunteer, Developer</p>
+            </div>
+          </div>
+        </div>
+        <div class="row">
+          <div class="col-sm-4">
+            <div class="imgAdvisors">
+              <%= image_tag 'Santiago.jpg', :class => "img-circle" %>
+            </div>
+            <div class="Advisors-title">
+              <h3><%= link_to "Santiago Leon", "https://www.linkedin.com/in/leon-santiago", :target => "_blank" %></h3>
+            </div>
+            <div class="Advisors-brief">
+              <p>Volunteer, Developer</p>
+            </div>
+          </div>
+          <div class="col-sm-4">
+            <div class="imgAdvisors">
+              <%= image_tag 'maria.png', :class => "img-circle" %>
+            </div>
+            <div class="Advisors-title">
+              <h3><%= link_to "Maria Acuna", "http://linkedin.com/in/maria-acuna", :target => "_blank" %></h3>
+            </div>
+            <div class="Advisors-brief">
+              <p>Volunteer, Developer</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="The_Team">
+      </div>
+      <div class="team-pics">
+        <h2> Board of Directors</h2>
+        <div class="col-sm-4">
+          <div class="imgAdvisors">
+            <%= image_tag 'Em1.jpg', :class => "img-circle" %>
+          </div>
+          <div class="Advisors-title">
+            <h3><%= link_to "Emily Sheldon", "https://www.linkedin.com/in/emilyksheldon", :target => "_blank" %></h3>
+          </div>
+          <div class="Advisors-brief">
+            <p>Co-Founder and CEO, African Health Innovation</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="imgAdvisors">
+            <%= image_tag 'JP.jpg', :class => "img-circle" %>
+          </div>
+          <div class="Advisors-title">
+            <h3><%= link_to "John-Paul Parmigiani", "https://www.linkedin.com/in/parmigiani", :target => "_blank" %></h3>
+          </div>
+          <div class="Advisors-brief">
+            <p>CEO & Co-founder at Impact Hub New York</p>
+          </div>
+        </div>
+        <div class="col-sm-4">
+          <div class="imgAdvisors">
+            <%= image_tag 'Geraldine.jpg', :class => "img-circle" %>
+          </div>
+          <div class="Advisors-title">
+            <h3><%= link_to "Geraldine Calvo", "https://www.linkedin.com/in/geraldinecalvo", :target => "_blank" %></h3>
+          </div>
+          <div class="Advisors-brief">
+            <p>Principal, Co-Founder at Stars and Sprinkles</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="team-join row">
+      <div class="col-sm-4">
+        <a class="btn btn-success join-btn" href="https://rave.flutterwave.com/pay/crowdfrica" target="blank">Support Our Work</a>
+      </div>
+      <div class="col-sm-4">
+        <a class="btn btn-success join-btn" href="https://goo.gl/forms/mqgvpCCho7MFrlnQ2" target="blank">Volunteer / Intern</a>
+      </div>
+      <div class="col-sm-4">
+        <a class="btn btn-success join-btn" href="https://www.crowdfrica.org/faq">Join Us</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="our_Advisors">
+        <h2>Our Great Advisors</h2>
+        <div class="team-pics">
+          <div class="col-sm-12">
+            <div class="imgAdvisors">
+              <%= image_tag 'Emily.jpg', :class => "img-circle" %>
+            </div>
+            <div class="Advisors-title">
+              <h3> Emily Sheldon</h3>
+            </div>
+            <div class="Advisors-brief">
+              <p>Director of Health, Impact Hub</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="Volunteers">
+        <h2> Founding Supporters</h2>
+        <div class="col-sm-6">
+          <div class="imgAdvisors">
+            <%= image_tag 'alison.jpg', :class => "img-circle" %>
+          </div>
+          <div class="Advisors-title">
+            <h3> Alison Roadburg</h3>
+          </div>
+          <div class="Advisors-brief">
+            <p>Operations Lead at Youth Challenge International</p>
+          </div>
+        </div>
+        <div class="col-sm-6">
+          <div class="imgAdvisors">
+            <%= image_tag 'Harold.jpg', :class => "img-circle" %>
+          </div>
+          <div class="Advisors-title">
+            <h3> Harold Ntorinkansah Jnr</h3>
+          </div>
+          <div class="Advisors-brief">
+            <p>MD Technology Grace Enterprise</p>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="row">
+      <div class="TeamBanner">
+        <%= image_tag 'Launch_team.jpg' %>
+      </div>
+    </div>
+  </div>
+  <div class="container tab-pane fade" id="partners">
+    <div class="Partnership row">
+      <%= link_to "/blog_posts/in-partnership-with-the-green-project-we-re-opening-up-our-platform-for-you-to-support-entrepreneurs-making-impact", target: "_blank" do %>
+        <div class="col-md-3 logos" id="green-logo"></div>
+      <% end %>
+    </div> 
+    <div class="">
+      In 2020, Crowdfrica in partnership with Strategic Impact Advisors, Kumasi Hive and iCode has been awarded by the United Nations Capital Development Fund (UNCDF) to pilot crowdfunding models in Ghana. The project is framed under the , “Boosting Green Employment and Enterprise Opportunities in Ghana – (GrEEn)” is a four-year action aimed at creating greater economic and employment opportunities for youth, women and returning migrants by promoting and supporting sustainable, green businesses in Ashanti and Western regions of Ghana. The project is implemented by UNCDF and SNV Netherlands Development Organization under the European Union Emergency Trust Fund (EUTF) for Africa. Learn more 
+      <%= link_to 'here', blog_post_path('in-partnership-with-the-green-project-we-re-opening-up-our-platform-for-you-to-support-entrepreneurs-making-impact') %>
+    </div>
+  </div>
+</section>

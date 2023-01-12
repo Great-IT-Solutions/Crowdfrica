@@ -1,0 +1,58 @@
+<% provide(:title, 'Admin Area') %>
+
+<h1> Overview </h1>
+<h4> Listing <%= pluralize(@projects.count, "Project") %> </h4>
+
+<%= will_paginate @projects, renderer: BootstrapPagination::Rails, previous_label: '<', next_label: '>' %>
+
+<table style="width: 100%;" class = "table table table-condensed table-hover">
+  <thead>
+    <tr class="head">
+      <th class="hl">Project Name</th>
+      <th class="hl">Campaign ID </th>
+      <th class="hl">Cost ($)</th>
+      <th class="hl">Funded ($)</th>
+      <th class="hl">Still Needed ($)</th>
+      <th class="hl">Fully Funded?</th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @projects.each do |project| %>
+      <tr class="project-info">
+        <% if project.campaign %>
+          <td align="left" title =" <%= project.project_name %>">
+            <p><%= link_to project.project_name.truncate(40), admin_project_donations_path(project.slug), class: 'links' %></p>
+          </td>
+          <td align="center"><p><%= project.campaign.id %></p></td>
+          <td align="center"><p><%= sprintf( '%.2f',  project.campaign.cost) %></p></td>
+          <td align="center"><p><%= sprintf( '%.2f',  project.campaign.total_amount_donated )%> </p></td>
+
+          <% if project.campaign.still_needed.negative? and project.campaign.campaign_name != 'holiday campaign' %>
+            <td align="center"><p><%= "Over funded by #{sprintf( '%.2f',  project.campaign.still_needed.abs )}" %> </p></td>
+          <% elsif project.campaign.still_needed.negative? and project.campaign.campaign_name == 'holiday campaign' %>
+            <td align="center"><p title="RUNNING CAMPAIGN"> RC </p></td>
+          <% else %>
+            <td align="center"><p><%= sprintf( '%.2f',  project.campaign.still_needed)  %> </p></td>
+          <% end %>
+
+          <% if project.campaign.campaign_name == 'holiday campaign' %>
+            <td align="center"> <p title="RUNNING CAMPAIGN"> RC </p></td>
+          <% elsif project.campaign.fully_funded? %>
+            <td align="center"><p> Yes </p></td>
+          <% else %>
+            <td align="center"><p> No </p></td>
+          <% end %>
+        <% else %>
+          <td align="left" title =" <%= project.project_name %>"> <p>
+          <%= link_to project.project_name.truncate(40), admin_project_donations_path(project.slug), class: 'links' %>
+           </p></td>
+           <td align="center"><p><%= project.id %></p></td>
+           <td align="center"><p> No Campaign </p></td>
+           <td align="center"><p> No Campaign </p></td>
+           <td align="center"><p> No Campaign </p></td>
+           <td align="center"><p> No Campaign </p></td>
+       <% end %>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

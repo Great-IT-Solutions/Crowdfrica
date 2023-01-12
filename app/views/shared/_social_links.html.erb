@@ -1,0 +1,13 @@
+<div style="display: flex" data-controller="social">
+  <div class="social-icon">
+    <%= image_tag "social/facebook_logo.png", style: 'cursor: pointer', class: "social-logo", data: {url: facebook_url(@campaign), action: 'click->social#openFacebookBox'} %>
+  </div>
+  <div class="social-icon">
+    <%= link_to "https://api.whatsapp.com/send?text=#{request.original_url}", target: "_blank" do %>
+      <%= image_tag "social/whatsapp_logo.png", class: "social-logo" %>
+    <% end %>
+  </div>
+  <div class="social-icon">
+    <%= image_tag "social/twitter_logo.png", style: 'cursor: pointer', class: "social-logo", data: {url: twitter_url(@campaign), action: 'click->social#openTwitterBox'} %>
+  </div>
+</div>

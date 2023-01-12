@@ -1,0 +1,2 @@
+$('#sign-up-errors').remove();
+$( "form#sign_up" ).prepend( "<div id='sign-up-errors' class='alert alert-danger margin-top-sm' role='alert'><a href='#' data-dismiss='alert' class='close'>×</a>"+JSON.stringify("<%= raw @errors.join(", ") %>")+"</div>" );

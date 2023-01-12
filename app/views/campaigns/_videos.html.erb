@@ -1,0 +1,7 @@
+<% if @video_attachments.any? %>
+  <div class="videos-container">
+    <% @video_attachments.each do |video_attachment| %>
+      <%= video_tag url_for(video_attachment.blob),controls:'' %>
+    <% end %>
+  </div>
+<% end %>

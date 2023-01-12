@@ -1,0 +1,33 @@
+<div class="row padding-reset">
+  <%= form_for @post, url: { action: action } do |f| %>
+    <div class="form-group margin-top-sm">
+      <%= f.label :title  %>
+      <%= f.text_field :title, required: true, autofocus:true, class:"form-control" %>
+    </div>
+    <div class="form-group margin-top-sm">
+      <%= f.label :summary  %>
+      <%= f.text_area :summary, required: true, class:"form-control" %>
+    </div>
+    <div class="form-group margin-top-sm">
+      <%= f.label :body %>
+      <%= f.rich_text_area :body, id: 'body', required: true %>
+    </div>
+    <div class="form-group margin-top-sm">
+      <%= f.label :image_url, "Blog Image Link" %>
+      <%= f.text_field :image_url, required:true, class:"form-control" %>
+    </div>
+    <div class="form-group margin-top-sm">
+      <%= f.label :author_bio, "Author Bio"  %>
+      <%= f.text_area :author_bio, required: true, class:"form-control" %>
+    </div>
+    <div class="form-group">
+      <%= f.label :tags, "Select tags" %><br>
+      <% tag_options = %w[health education fundraising success] %>
+      <% tag_options.each do |tag_option| %>
+        <%= f.check_box :tags, { multiple: true }, tag_option, false %>
+        <%= f.label "#{tag_option}".capitalize %>
+      <% end %>
+    </div>
+    <%= f.submit class: "btn btn-crwd-primary" %>
+  <% end %>
+</div>

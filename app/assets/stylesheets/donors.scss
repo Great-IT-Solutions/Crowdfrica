@@ -1,0 +1,65 @@
+// Place all the styles related to the donors controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.donor {
+    width: 100%;
+}
+
+.donor .details {
+}
+
+.donor .details img {
+	width: 180px;
+  height: 180px;
+  border-radius: 50%;
+
+}
+
+.donor .details div {
+	display: inline-table;
+}
+
+.donor h1 {
+	color: #4b5c66;
+	padding: 10px;
+}
+
+.donor .details div h5 {
+	color: #4b5c66;
+}
+
+.donor .details div p {
+	//color: #c9ced1;
+}
+.champ-verified {
+  padding: 0 20px;
+
+
+}
+.donor .story, .donor .patients {
+	width: 100%;
+	padding-bottom: 90px;
+}
+
+.donor .story h1, .donor .patients h1 {
+	border-bottom: 1px solid #c9ced1;
+	text-align: left;
+}
+
+
+
+.avatar_container .avatar-initials {
+    width: 180px;
+    height: 180px;
+    border-radius: 50%;
+    padding: 0px 0px;
+    display: inline-block;
+    line-height: 181px;
+    font-size: 74px;
+    text-align: center;
+    color: white;
+}
+
+.details {
+    padding-bottom: 0px;
+}

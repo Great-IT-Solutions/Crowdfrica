@@ -1,0 +1,55 @@
+<div class="comments">
+  <div class="comments-header row">
+    <h4>Comments (<%= @post.comments.size %>)</h4>
+    <span class="pull-right">&caron;</span>
+  </div>
+  <div class="comments-body hidden">
+    <% if admin_user_signed_in? || current_donor %>
+      <div class="comment-form">
+        <%= form_for(@comment) do |f| %>
+          <div class="form-group">
+            <% if admin_user_signed_in? %>
+              <%= f.hidden_field :commenter_id, value: current_admin_user.id %>
+              <%= f.hidden_field :commenter_type, value: 'AdminUser' %>
+            <% elsif current_donor %>
+              <%= f.hidden_field :commenter_id, value: current_donor.id %>
+              <%= f.hidden_field :commenter_type, value: 'Donor' %>
+            <% end %>
+            <%= f.hidden_field :commentable_id, value: @post.id %>
+            <%= f.hidden_field :commentable_type, value: "BlogPost" %>
+          </div>
+          <div class="form-group">
+            <%= f.text_area :body, placeholder: "write a comment", rows:"3", class:"form-control" %>
+          </div>
+          <div class="form-group">
+            <%= f.submit "Post", class:"btn btn-crwd-primary pull-right" %>
+          </div>
+        <% end %>
+      </div>
+    <% else  %>
+      <div class="text-center text-dark">
+        <%= link_to "Sign in to post a comment", root_path  %>
+      </div>
+    <% end %>
+    <div class="comments-list">
+      <% @post.comments.each do |comment| %>
+        <li class="media">
+          <div class="media-body">
+            <span class="text-muted pull-right">
+              <small class="text-muted"><%= time_ago_in_words(comment.created_at) %></small>
+            </span>
+            <strong class="text-success"><%= comment.commenter.fullname %></strong>
+            <p>
+              <%= comment.body %>
+              <% if (admin_user_signed_in? || current_donor == comment.commenter) %>
+                <span class="pull-right">
+                  <small><%= link_to 'Delete', comment_path(comment), method: :delete %></small>
+                </span>
+              <% end %>
+            </p>
+          </div>
+        </li>
+      <% end %>
+    </div>
+  </div>
+</div>

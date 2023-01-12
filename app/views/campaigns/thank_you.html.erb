@@ -1,0 +1,9 @@
+<% provide(:title, "Thank You") %>
+<div>
+  <h2 class="thanks-h1">Thank you for your donation.</h2>
+  <h4 class="thanks-body">You'll receive your receipt as soon as possible. You will also be getting updates from us once the campaign is fully funded. Please share for your friends to join you to make this impact happen. Please <a href="<%= campaign_url(@campaign)%>"> click here</a> to visit the donation page and see your donation.</h4>
+
+  <div class="thank-you-socials">
+    <p><%= render partial: 'shared/social_links' %></p>
+  </div>
+</div>

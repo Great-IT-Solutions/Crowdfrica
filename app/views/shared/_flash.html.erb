@@ -1,0 +1,12 @@
+
+<% if flash[:notice] %>
+         <div class="form alert fade in alert-success alert-dismissible pos-abs">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Success! </strong><%= sanitize(flash[:notice]) %>
+        </div>
+      <% elsif flash[:alert] %>
+         <div class="form alert fade in alert-danger alert-dismissible pos-abs" alert-danger alert-dismissible">
+              <a href="#" class="close" data-dismiss="alert" aria-label="close">&times;</a>
+              <strong>Failure! </strong> <%= sanitize(flash[:alert]) %>
+        </div>
+<% end %>

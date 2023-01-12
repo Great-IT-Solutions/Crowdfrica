@@ -1,0 +1,35 @@
+<% donors.each do |donor| %>
+    <% donation = donor&.donations.where(project_id: @campaign.project).sum(:amount) %>
+    <% if donation.blank? %>
+        <div class="avatar_container anonymous-donor">
+            <div class="alink anony">
+            <div class="avatar round-icon">
+                <%= image_tag "logo.png", width: 48, height: 48, class: 'grey',
+                                        title: "Anonymous donor - #{number_to_currency(donation)}" %>
+            </div>
+            </div>
+        </div>
+    <% else %>
+        <%= link_to donor_path(donor), class: "alink", title: "#{donor.fullname} - #{number_to_currency(donation)}" do %>
+            <% if donor.profile_image? %>
+                <div class="avatar_container round-icon profile_48x48">
+                    <%= image_tag(donor&.image, class: "mini-profile-pic") %>
+                </div>
+            <% else %>
+                <div class="avatar_container round-icon profile_48x48">
+                    <span class="avatar" style=<%= "background-color:#{donor.color};" %>>
+                        <%= donor.initials %> 
+                    </span>
+                </div>
+            <% end %>
+        <% end %>
+    <% end %>
+<% end %>
+<div class="USSD">
+    <%= will_paginate @total_donors, { link_options: {'data-remote': true }, params: { action: 'get_donors' }} %>
+</div>
+<script>
+   $(function(){
+     $('.pagination a').attr('data-remote', 'true')
+   });
+ </script>

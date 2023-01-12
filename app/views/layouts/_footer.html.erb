@@ -1,0 +1,55 @@
+<footer class="row">
+	<div class="footerBox">
+	<div class="col-sm-4 ft-links">
+         <%= link_to "About Us", about_path %> 
+
+        <a href="/about"><h5>Crowdfrica</h5></a>
+
+	  	<a href="/howitworks"><h5>How It Works</h5></a>
+
+	  	<a href="/foundingdonors"> <h5>Founding Donors</h5></a>
+
+	  	<a href="https://docs.google.com/spreadsheets/d/1LKnPkmPd2ORKsqvtGauFw1eCk6wo84GrX7_BK15UT_4/edit?usp=sharing" target="blank"><h5>Transparency</h5></a>
+	  	<!--<h5>Career</h5>-->
+	</div>
+    
+	<div class="col-sm-4 ft-links">
+	    <a href="#"><h4>More Ways To Give</h4></a>
+	    <a href="/giftcard" class="drop"> <span class="glyphicon glyphicon-gift user"></span>Buy Gift card</a>
+	    <a href="/campaigns"><h5>Fund A Patient</h5></a>
+
+	  	<a href="/generalfund"><h5>General Fund</h5></a>
+
+	  	<a href="/generalfund"><h5>Support Us</h5></a>
+
+	  	<!--<h5>Partner With Us</h5>
+	  	<h5>Volunteer With Us</h5>-->
+	</div>
+    
+	<div class="col-sm-4 ft-links">
+            <%= link_to "Support", campaigns_path %> 
+		<a href="/blog_posts"><h5>Blog</h5></a>
+
+	  	<a href="/faq"><h5>Contact Us</h5></a>
+	  	<a href="/privacy"><h5>Privacy Policy</h5></a> 
+	  	<a href="/terms"><h5>Terms Of Use</h5></a> 
+	</div>
+	</div>
+    <div class="col-sm-12">
+    	<div class="footer_Social_Box">
+             <%= link_to ' follow @ crowdfrica', "https://twitter.com/crowdfrica", class: "fa fa-twitter twi btn btn-md btn-info", target: "blank"%>
+     </div>
+     <br />
+    </div>
+	<div class="col-xs-12 col-sm-12 col-md-12">
+		<div class="copyright">
+			<p>&copy; <%= Time.now.year %>  Crowdfrica Organization. A nonprofit Organization</p>
+		</div>
+</div>
+	<div class="footerlogos">
+		<div class="col-sm-12">
+			<a href='https://www.expeditedssl.com/simple-ssl-scanner/scan?target_domain=www.crowdfrica.com' 
+  			target='_blank' rel='nofollow'><img src='https://www.expeditedssl.com/ssl-secure-badge.png'  alt='Expedited SSL Scanner'></a> <a href="https://www.dataprotection.org.gh" target="_blank"> <%= image_tag "dataprotection.jpg"%></a>
+  		</div>
+  	</div>	
+</footer>

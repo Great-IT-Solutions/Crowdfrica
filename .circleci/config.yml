@@ -1,0 +1,60 @@
+version: 2.1
+jobs:
+  build:
+    environment:
+      CC_TEST_REPORTER_ID: aca88ff46bd1bebbcfde38971d5fad391e0898ab864729b830d18fbeba81d252
+    docker:
+      - image: "circleci/ruby:2.6.6-browsers"
+        environment:
+          RAILS_ENV: test
+          DATABASE_URL: postgresql://postgres:bigsecret@localhost/crowdfrica_test
+      - image: postgres:12.3
+        environment:
+          POSTGRES_HOST: 127.0.0.1
+          POSTGRES_USER: postgres
+          POSTGRES_DB: crowdfrica_test
+          POSTGRES_PASSWORD: bigsecret
+    steps:
+      - checkout
+      - run:
+          name: install node.js
+          command: sudo apt-get --allow-releaseinfo-change update && curl -sL https://deb.nodesource.com/setup_12.x | sudo -E bash -
+      - run:
+          name: install yarn
+          command: |
+            curl -sL https://dl.yarnpkg.com/debian/pubkey.gpg | sudo apt-key add -
+            echo "deb https://dl.yarnpkg.com/debian/ stable main" | sudo tee /etc/apt/sources.list.d/yarn.list
+            sudo apt-get update && sudo apt-get install yarn
+            sudo apt install -y postgresql-client || true
+      - run:
+          name: Install bundler and install
+          command: |
+            gem install bundler:2.1.4
+            bundle install
+      - run:
+          name: yarn install
+          command: yarn install
+      - run:
+          name: Database setup
+          environment:
+            RAILS_ENV: test
+            POSTGRES_HOST: "127.0.0.1"
+            POSTGRES_USER: postgres
+            POSTGRES_PASSWORD: bigsecret
+          command: |
+            bundle exec rake db:create
+            bundle exec rails db:schema:load
+      - run:
+          name: Setup Code Climate test-reporter
+          command: |
+            # download test reporter as a static binary
+            curl -L https://codeclimate.com/downloads/test-reporter/test-reporter-latest-linux-amd64 > ./cc-test-reporter
+            chmod +x ./cc-test-reporter
+      - run:
+          name: Run tests
+          command: |
+            ./cc-test-reporter before-build
+            bundle exec rspec --format progress --format RspecJunitFormatter --out test-results/rspec.xml
+            ./cc-test-reporter after-build
+      - store_test_results:
+          path: test-results

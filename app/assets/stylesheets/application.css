@@ -1,0 +1,286 @@
+/*
+ * This is a manifest file that'll be compiled into application.css, which will include all the files
+ * listed below.
+ *
+ * Any CSS and SCSS file within this directory, lib/assets/stylesheets, vendor/assets/stylesheets,
+ * or any plugin's vendor/assets/stylesheets directory can be referenced here using a relative path.
+ *
+ * You're free to add application-wide styles to this file and they'll appear at the bottom of the
+ * compiled file so the styles you add here take precedence over styles defined in any other CSS/SCSS
+ * files in this directory. Styles in this file should be added after the last require_* statement.
+ * It is generally better to create a new file per style scope.
+ *
+
+ *= require font-awesome
+ *= require_tree .
+ *= require_self
+ *= require social-share-button
+
+ */
+
+
+textarea{
+        resize: none;
+        width: 100%
+}
+
+ h1 {
+  font-family: 'Noto Sans', sans-serif;
+ }
+
+body {
+	font-family: 'Noto Sans', sans-serif;
+  font-size: 16px;
+}
+
+.navbar-toggle {
+    margin-right: 0px;
+}
+
+.container-fluid .jumbotron {
+	padding: 0px;
+}
+
+.container-fluid {
+	padding-right: 0px;
+	padding-left: 0px;
+}
+
+@media (min-width: 767px) {
+  .navbar-right {
+    margin-right: 150px;
+  }
+
+}
+
+
+.nav > li {
+    position: relative;
+    display: block;
+    font-family: 'Noto Sans', sans-serif;
+}
+
+@media (max-width: 400px) {
+	.navbar-brand {
+		padding: 15px 30px;
+	}
+}
+
+.row {
+    margin-left: 0px;
+    margin-right: 0px;
+}
+
+.form-control {
+	border-radius: 0px;
+}
+
+.ts {
+    /* padding-left: 10px; */
+}
+
+
+.pagination > .active > span, .pagination > .active > span:hover, .pagination > .active > span:focus {
+    z-index: 3;
+    color: #fff;
+    background-color: #fe5103;
+    border-color: #fe5103;
+    cursor: pointer;
+}
+
+.pagination > li > a:hover, .pagination > li > a:focus, .pagination > li > span:hover, .pagination > li > span:focus {
+    z-index: 2;
+    color: #fe5103;
+    background-color: #ffffff;
+    border-color: #fe5103;
+    outline: none;
+}
+
+.pagination > li > a, .pagination > li > span {
+    position: relative;
+    float: left;
+    padding: 6px 12px;
+    line-height: 1.42857143;
+    text-decoration: none;
+    color: #fe5103;
+    background-color: #fff;
+    border: 1px solid #fe5103;
+    margin-left: -1px;
+}
+
+/* Style all font awesome icons */
+
+
+/* Add a hover effect if you want */
+.fa:hover {
+    opacity: 0.7;
+}
+
+/* Set a specific color for each brand */
+
+/* Facebook */
+.faceb {
+    background: #3B5998;
+    color: white;
+    padding: 15px;
+    font-size: 35px;
+    width: 46px;
+    text-align: center;
+    text-decoration: none;
+    /*border-radius: 50%;*/
+}
+
+.fa_custom1 {
+  background: #34af23;
+  color: white;
+  padding: 15px;
+  font-size: 35px;
+  width: 46px;
+  text-align: center;
+  text-decoration: none;
+  /*border-radius: 50%;*/;
+}
+
+
+/* Twitter */
+.tweet{
+    background: #55ACEE;
+    color: white;
+    padding: 15px;
+
+    width: 46px;
+    text-align: center;
+    text-decoration: none;
+    /*border-radius: 50%;*/
+}
+
+.tshare{
+  background: #55ACEE;
+  color: white;
+  padding: 20px;
+  font-size: 40px;
+  width: 150px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px;
+
+}
+
+
+.fshare{
+  background: #3B5998;
+  color: white;
+  padding: 20px;
+  font-size: 40px;
+  width: 150px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px;
+
+}
+
+
+.fa_custom {
+  background: #34af23;
+  color: white;
+  padding: 20px;
+  font-size: 50px;
+  width: 150px;
+  text-align: center;
+  text-decoration: none;
+  margin: 10px;
+}
+
+
+
+
+
+
+
+.donateshare{
+  margin-bottom: 15px;
+}
+
+.trix_editor{
+    text-size:20px;
+}
+
+
+.margin-top-lg{
+  margin-top: 50px;
+}
+
+.margin-top-md{
+  margin-top: 10px;
+}
+
+.margin-top-sm{
+  margin-top: 15px;
+}
+
+.margin-right-sm{
+  margin-right: 5px;
+}
+
+.margin-right-md{
+  margin-right: 10px;
+}
+
+.padding-reset{
+  padding: 0;
+}
+
+.word-with-line{
+  border-bottom: 1px solid #e5e7e8;
+  line-height: .1em;
+  width: 60%;
+  margin: 20px auto 10px;
+}
+
+.word-with-line span{
+  background: #fff;
+  padding-left: 10px;
+  padding-right: 10px;
+}
+
+.modal {
+overflow: auto !important;
+}
+
+.btn-crwd-primary{
+  background-color: #ff5103;
+  color: #fff;
+}
+.btn-crwd-primary:hover{
+  background-color: #ff5103;
+  border-color: #398439;
+  color: #fff;
+}
+
+.link-crwd{
+  color: #ff5103;
+}
+
+.link-crwd:hover{
+  color: #ff5103;
+  text-decoration: underline;
+}
+
+.btn-facebook{
+  background-color: #4267B2;
+  color: #fff;
+}
+
+.btn-facebook:hover,.btn-facebook:focus,.btn-facebook:active{
+  background-color: #4267B2;
+  color: #fff;
+}
+
+.small-drop-down{
+  width: 150px;
+  display: inline-block;
+}
+
+.margin-bottom-md{
+  margin-bottom: 30px;
+}

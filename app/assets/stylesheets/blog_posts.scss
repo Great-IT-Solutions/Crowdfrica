@@ -1,0 +1,240 @@
+// Place all the styles related to the BlogPosts controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+
+// BLOG HEADER
+.blogs-header {
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
+  text-align: center;
+  background-color: #f95208;
+  color: white;
+  padding: 0.1rem;
+  margin: 0;
+}
+
+.blogs-nav {
+  .navbar-default {
+    background-color: #474747;
+  }
+  .navbar ul {
+    padding-left: auto;
+    padding-right: auto;
+    width: 100%;
+  }
+  .navbar .navbar-nav {
+    a {
+      color: white;
+      &:hover {
+        color: #ffcab4;
+      }
+    }
+  }
+  .custom-center {
+    justify-content: center;
+  }
+}
+
+@media (max-width: 600px){
+  .blogs-nav {
+    .navbar-default {
+    font-size: 1rem;
+    }
+    .navbar .navbar-nav a {
+    padding: 0;
+    padding-right: 0.3rem;
+    padding-left: 0.3rem;
+    }
+    .navbar ul {
+      margin: 1rem;
+    }
+  }
+}
+
+.d-flex {
+  display: flex;
+}
+
+// BLOG_POST_SHOW
+.blog-details-container {
+  font-size: 16px;
+  .post-img {
+    width: 100%;
+    max-height: 400px;
+    object-fit: contain;
+  }
+
+  .card-title {
+    margin-bottom: 30px;
+    font-weight: bold;
+  }
+
+  .side-bar .card {
+    margin-bottom: 4rem;
+  }
+
+  .d-flex {
+  display: flex;
+  }
+
+  .blog-author {
+    margin-bottom: 80px;
+    .media {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    .author-name {
+      font-weight: bold;
+    }
+  }
+
+  .blog-social-links-top {
+    justify-content: flex-start;
+    span {
+      margin-left: auto;
+    }
+  }
+
+  .blog-social-links-bottom {
+    justify-content: flex-end;
+  }
+
+  .blog-social-link {
+    margin-right: 10px;
+  }
+
+  .trix-content {
+   text-align: justify;
+  }
+
+  .by-line {
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-end;
+    margin-top: 10px;
+  }
+
+  hr {
+    margin: 10px 0;
+  }
+
+  .comments {
+    width: 100%;
+    padding: 5%;
+    margin: 50px auto;
+    box-shadow: 2px 2px 2px 2px grey;
+  }
+
+  .comments-header {
+    cursor: pointer;
+    :hover {
+      text-decoration: underline;
+    }
+  }
+
+  .comments-list {
+    padding-top: 50px;
+  }
+
+}
+
+@media (max-width: 767px) {
+  #blog-details-container {
+    margin: 0 10px;
+  }
+}
+
+@media (min-width: 768px) {
+  .blog-author {
+    max-width: 50%;
+  }
+}
+
+@media (min-width: 992px) {
+  .blog-details-container .main-col  {
+  padding-right: 40px;
+  }
+
+  .blog-details-container .side-bar {
+    img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+    }
+  }
+}
+
+// BLOG INDEX
+.blog-index-container {
+  font-size: 14px;
+  // text-align: justify;
+  .btn-crwd-primary {
+    background-color: #474747;
+  }
+  .card-title, .media-title {
+    font-weight: bold;
+  }
+  img {
+    width: 100%;
+    max-height: 300px;
+    object-fit: cover;
+  }
+  .all-post-col {
+    .recent-posts {
+      border-bottom: 2px solid grey;
+    }
+  }
+  .col-md-4, .col-md-6, .col-md-12 {
+    padding-left: 0;
+    padding-right: 0;
+  }
+  .card, .media {
+    margin-bottom: 4rem;
+  }
+  .older-posts {
+    padding-top: 2rem;
+  }
+}
+
+@media (min-width: 992px){
+  .blog-index-container {
+    .most-recent-post {
+      margin-right: 10px;
+      img {
+        width: 60%;
+        height: auto;
+      }
+      .media-body {
+        padding-left: 10px;
+      }
+      .btn {
+        margin-left: 10px;
+      }
+    }
+
+    .recent-post {
+      padding-right: 25px;
+      img {
+        max-width: 100%;
+        height: 200px;
+        object-fit: cover;
+      }
+    }
+
+    .older-posts img {
+      max-width: 60%;
+      max-height: 300px;
+      object-fit: cover;
+      float: right;
+      margin-left: 1rem;
+    }
+
+    .side-bar {
+      img {
+        width: 100%;
+        height: 400px;
+        object-fit: cover;
+      }
+    }
+  }
+}

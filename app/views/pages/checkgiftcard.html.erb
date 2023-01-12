@@ -1,0 +1,57 @@
+<div class="container ">
+
+      <section class="story-sect">
+        <div class="container">
+          <div class="row">
+            <div class="col-md-6 story-abt-team">
+              <h2><b>Redeem a gift card</b></h2>
+
+              
+              <div>
+
+                <%= text_field_tag(:giftcardcode) %>
+                <button id="checkgiftcard">check</button>
+                <div><b>Enter giftcode</b></div>
+              </div>
+              <div id="gift_card_notice">
+                <p></p>
+              </div>
+              <div class="story-abt-team2">
+                <a href="/campaigns">Select a campaign here</a> and donate using giftcode at checkout!
+              </div>
+
+            </div>
+            <div class="col-md-6 story-abt2">
+            </div>
+          </div>
+        </div>
+      </section>
+
+</div>
+
+<script>
+  let checkGiftButton = document.getElementById('checkgiftcard');
+  
+  function gift_redeem_message(response) {
+    let gift_notice = document.querySelector('#gift_card_notice p');
+    gift_notice.innerHTML = `The amount left on this card is $${response.remainingValue}`
+  }
+
+  checkGiftButton.addEventListener('click', function() {
+    let giftcode = document.getElementById('giftcardcode').value;
+    fetch(`https://api.giftup.app/gift-cards/${giftcode}`, {
+      method: 'GET',
+      mode: 'cors',
+      headers: {
+        'Content-Type': 'application/json',
+        'x-giftup-testmode': false,
+        'Authorization': '<%= ENV['GIFT_UP_ID'] %>'
+      }
+    })
+    .then(data => data.json())
+    .then(result => {
+      gift_redeem_message(result);
+    });
+  });
+  
+</script>

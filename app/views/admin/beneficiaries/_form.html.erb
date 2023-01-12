@@ -1,0 +1,20 @@
+<h3>Beneficiary Details</h3>
+<%= form_for [:admin, @beneficiary] do |f| %>
+  <%= render 'admin/shared/error_messages', resource: @beneficiary %>
+  <div class="form-group">
+    <%= f.label :beneficiary_name %>
+    <%= f.text_field :beneficiary_name, required: true, class: 'form-control' %>
+  </div>
+  <div class="form-group margin-top-sm">
+    <%= f.label 'Country' %>
+    <%= f.country_select(:country, {include_blank: "Select beneficiary's country"}, {class: 'form-control'}) %>
+  </div>
+  <div class="form-group margin-top-sm">
+    <%= f.label 'Beneficiary type' %> <br/>
+    <%= f.select :btype, Beneficiary.btypes.keys.map{ |b| [b.humanize, b]}, {}, {class: 'form-control'} %>
+  </div>
+  <div class="form-group margin-top-sm">
+    <%= f.submit class: 'btn btn-crwd-primary' %>
+  </div>
+<% end %>
+

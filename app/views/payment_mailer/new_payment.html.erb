@@ -1,0 +1,45 @@
+<div class="email">
+  <%= image_tag("logo.png", :class=>"lg", style:"display:block; width:auto; margin: 0 auto; width: 59px; height: 59px;")%><br>
+  <h1 id="heading" style="text-align:center; font-weight: bold;">YOU'RE THE BEST!
+  </h1>
+
+  <p id="cn" style="text-align: center;">Grateful for your kindness in support for
+    <%= @beneficiary_name%></p>
+  <p id="kushoto" style="float:left;">
+    <a href="https://www.crowdfrica.org/campaigns/<%= @campaign_id%>" target="_blank"><%= @project_name%></a>
+  </p>
+  <p id="kulia" style="float: right;">You Donate $<%= @donation.amount%></p><br><br><br>
+  <span id="hide"><br><br><br><br><br></span>
+  <hr>
+  <h4>
+    <strong>TOTAL TAX DEDUCTIBLE DONATION</strong>
+  </h4>
+  <span id="amount" style="float: right;"><%= @donation.amount%></span>
+  <p>
+    <strong>Name:
+    </strong><%= @donor.fullname%></p>
+  <p>
+    <strong>Donation date:
+    </strong><%= @donation.created_at%></p>
+  <p>
+    <strong>Donated to project ID:
+    </strong><%= @donation.project_id %></p>
+
+  <hr id="mbili" style="background-color: #ff7e1c; border-color:#ff7e1c;">
+  <p>Crowdfrica Organisation is a charity incorporated in Ghana. TIN Number: C0004787370. This email serves as your receipt for tax purposes. Donation from USA is not tax-deductible yet. Crowdfrica is in the process of acquiring a 501(c)(3) status in
+    the united states. No goods or services were provided to you in connection with this donation.
+  </p><br><br><br><br>
+  <hr id="tatu" style="background-color: black; border-color: black;">
+  <p id="kati" style="text-align: center;">We sent this email with
+    <%= image_tag('heart.png', id: "heart")%>
+    because you donated to make impact on Crowdfrica. You can update your
+    <br>preferences or unsubscribe from this list. Follow us:
+    <a href="https://twitter.com/crowdfrica?lang=en" target="_blank">Twitter</a>
+    <a href="https://www.facebook.com/crowdfrica/" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/explore/tags/crowdfrica/" target="_blank">Instagram</a>
+  </p>
+  <p id="kati" style="text-align: center;">Need help? Contact Us.<br>
+    Crowdfrica.org, Impact Hub Accra, F393/3, Otswe Street, Osu, Accra-Ghana.
+  </p>
+
+</div>

@@ -1,0 +1,97 @@
+<div class='contain'>
+  <%# Patients %>
+  <div class="row padding-reset">
+    <%= form_for @project do |f| %>
+      <h3> Project Details </h3>
+      <div class='form-group'>
+        <%= f.label :project_name %>
+        <%= f.text_field :project_name, autofocus: true, required: true, class: "form-control" %>
+      </div>
+      <div class='form-group margin-top-sm'>
+        <%= f.label :project_description %>
+        <%= f.rich_text_area :project_description %>
+      </div>
+
+      <div data-controller="category-selector">
+        <div class='form-group margin-top-sm'>
+          <%= f.label :category %>
+          <div>
+        <span style="margin-right: 1rem;">
+          <%= f.radio_button :category_id, @patient_category.id, data: {action: 'category-selector#toggle'} %>
+          <%= f.label :category_id, 'Patients', value: @patient_category.id, class: 'color-a' %>
+        </span>
+            <span style="margin-right: 1rem;">
+          <%= f.radio_button :category_id, @insurance_category.id, data: {action: 'category-selector#toggle'} %>
+              <%= f.label :category_id, 'Health Insurance', value: @insurance_category.id, class: 'color-b' %>
+        </span>
+            <span style="margin-right: 1rem;">
+          <%= f.radio_button :category_id, @classroom_category.id, data: {action: 'category-selector#toggle'} %>
+              <%= f.label :category_id, 'Classroom Supplies', value: @classroom_category.id, class: 'color-c' %>
+        </span>
+          </div>
+        </div>
+
+        <div class="margin-top-sm">
+          <!-- Patient -->
+          <div data-target="category-selector.container" data-category-id="<%= @patient_category.id %>" class="color-a <%= category_content_class(@project.category_id, @patient_category.id) %>">
+            <div class='col-lg-12 col-md-12 padding-reset margin-top-sm'>
+              <div class="col-lg-2 col-md-2 padding-reset"><%= f.label :medical_cost %></div>
+              <div class="col-lg-2 col-md-2 padding-reset"><%= f.number_field :medical_cost, required: true, maxlength: 6, class: "form-control" %></div>
+            </div>
+          </div>
+          <!-- Health Insurance -->
+          <div data-target="category-selector.container" data-category-id="<%= @insurance_category.id %>" class="color-b <%= category_content_class(@project.category_id, @insurance_category.id) %>">
+            <div class='col-lg-12 col-md-12 padding-reset margin-top-sm'>
+              <div class="col-lg-2 col-md-2 padding-reset"><%= f.label :year_cost %></div>
+              <div class="col-lg-2 col-md-2 padding-reset"><%= f.number_field :year_cost, required: true, maxlength: 6, class: "form-control" %></div>
+            </div>
+
+            <div class='col-lg-12 col-md-12 padding-reset margin-top-sm'>
+              <div class="col-lg-2 col-md-2 padding-reset"><%= f.label :renewal, "Renewal Cost" %></div>
+              <div class="col-lg-2 col-md-2 padding-reset"><%= f.number_field :renewal, required: true, maxlength: 6, class: "form-control" %> </div>
+            </div>
+          </div>
+          <!-- Classroom Supplies -->
+          <div data-target="category-selector.container" data-category-id="<%= @classroom_category.id %>" class="color-c <%= category_content_class(@project.category_id, @classroom_category.id) %>">
+            <div class='col-lg-12 col-md-12 padding-reset margin-top-sm'>
+              <div class="col-lg-2 col-md-2 padding-reset"><%= f.label :equipment_cost, "Supply Cost" %></div>
+              <div class="col-lg-2 col-md-2 padding-reset"><%= f.number_field :equipment_cost, required: true, maxlength: 6, class: "form-control" %></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class='col-lg-12 col-md-12 padding-reset margin-top-sm'>
+        <div class="col-lg-2 col-md-2 padding-reset"><%= f.label :processing, "Processing Costs" %></div>
+        <div class="col-lg-2 col-md-2 padding-reset"><%= f.number_field :processing, required: true, maxlength: 6, class: "form-control" %>  </div>
+      </div>
+
+      <div class='col-lg-12 col-md-12 padding-reset margin-top-sm'>
+        <div class="col-lg-2 col-md-2 padding-reset"><%= f.label :operational_costs %> </div>
+        <div class="col-lg-2 col-md-2 padding-reset"><%= f.number_field :operational_costs, required: true, maxlength: 6, class: "form-control" %>  </div>
+      </div>
+
+
+      <div class='col-lg-12 col-md-12 padding-reset margin-top-sm'>
+        <div class="col-lg-2 col-md-2 padding-reset"><%= f.label :cost, "Total Cost" %></div>
+        <div class="col-lg-2 col-md-2 padding-reset"><%= f.number_field :cost, required: true, maxlength: 6, class: "form-control" %>  </div>
+      </div>
+
+      <div class='form-group margin-top-sm'>
+        <%= f.label :ailment_or_equipment %>
+        <%= f.text_field :ailment_or_equipment, class: "form-control" %>
+      </div>
+
+      <div class='form-group margin-top-sm'>
+        <%= f.label :expires_at, class: "margin-right-sm" %>
+        <%= f.date_select :expires_at, {}, {class: "form-control small-drop-down"} %>
+      </div>
+
+      <%= f.hidden_field :beneficiary_id, value: params[:beneficiary] if @project.beneficiary.nil? %><br/>
+
+      <div class='form-group'>
+        <%= f.submit class: "btn btn-crwd-primary" %>
+      </div>
+    <% end %>
+  </div>
+</div>

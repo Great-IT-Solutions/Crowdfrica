@@ -1,0 +1,23 @@
+<% donations.each do |donation| %>
+    <tr>
+    <td align="left" title =" <%= donation.project.project_name %>"><%= donation.project.project_name.truncate(27) %></td>
+    <td align="center"><%= donation.date.to_time.strftime('%e %b %Y at %l:%M %p') %></td>
+    <td align="center"><%= sprintf( '%.2f', donation.amount.to_f) %></td>
+    <% if params[:p] == 'emergent' %>
+        <td align="center"><%= sprintf( '%.2f', donation.ghs_amount.to_f) %></td>
+    <% end %>
+    <% if params[:p] == 'paypal' %>
+        <td align="center"><%= sprintf( '%.2f', donation.tip.to_f) %></td>
+    <% end %>
+    <td align="center"><%= donation.anonymous? %></td>
+    <td align="center"><%= donation.donor.fullname %></td>
+    <% if params[:p] == 'emergent' %>
+        <td align="center"><%= donation.donor.mobile_number %></td>
+    <% end %>
+    <td align="center"><%= donation.donor.email %></td>
+    <% if params[:p] == 'squareup' %>
+        <td align="center"><%= sprintf( '%.2f', donation.tip.to_f) %></td>
+        <td align="center"><%= sprintf( '%.2f', donation.ghs_tips.to_f) %></td>
+    <% end %>
+    </tr>
+<% end %>

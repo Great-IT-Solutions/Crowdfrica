@@ -1,0 +1,57 @@
+<% provide(:title, @post.title) %>
+<% meta_tag :title, @post.title %>
+<% meta_tag :url, request.url %>
+<% meta_tag :description, @post.summary %>
+<% meta_tag :image, asset_url(@post.image_url) %>
+<%= render 'blogs_header' %>
+<div class="blog-details-container container" id="blog-details-container">
+  <div class="row">
+    <div class="col-md-9 main-col">
+      <div class="card post-card">
+        <h3 class="card-title text-center"><%= @post.title %></h3>
+        <% if @post.image_url %>
+          <%= image_tag @post.image_url, alt: "Blog image", class:"card-img-top post-img" %>
+        <% end %>
+        <div class="by-line d-flex">
+          <div class="d-flex blog-social-links-top">
+            <%= render "blog_social_links" %>
+          </div>
+          <div class="post-date">
+            <strong cass=""><i class="fa fa-calendar" aria-hidden="true"></i>
+              <%= @post.created_at.strftime('%B %e, %Y') %></strong>
+          </div>
+        </div>
+        <hr>
+        <div class="card-body">
+          <p class="card-text"><%= @post.body %></p>
+          <div class="row margin-bottom-md d-flex flex-row blog-social-links-bottom">
+            <%= render "blog_social_links" %>
+          </div>
+        </div>
+      </div>
+      <%= render "blog_author" %>
+      <%= render "blog_comments" %>
+    </div>
+    <div class="col-md-3 side-bar bg-tertiary">
+      <div class="card">
+        <%= link_to "#" do %>
+          <h4 class="text-center">Fundraising Resources</h4>
+          <%= image_tag "fundraising.jpg", alt: "fundraising image", class: "card-img-top hidden-xs hidden-sm" %>
+        <% end %>
+      </div>
+      <div class="card">
+        <%= link_to "#" do %>
+          <h4 class="text-center">Fundraising Tips</h4>
+          <%= image_tag "fundraising2.jpg", alt: "fundraising image", class: "card-img-top hidden-xs hidden-sm" %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
+<script>
+  var commentsHeader = document.querySelector('.comments-header');
+  var commentsBody = document.querySelector('.comments-body');
+  commentsHeader.addEventListener('click', () => {
+    commentsBody.classList.toggle('hidden')
+  })
+</script>

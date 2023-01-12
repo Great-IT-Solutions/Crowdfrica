@@ -1,0 +1,61 @@
+<% provide(:title, "#{@category.category_name}") %>
+<div class="container">
+  <h2> <%= @category.category_name.humanize %> </h2>
+  <% if @category.category_name.humanize == "Entrepreneurs" %>
+  <p>
+    Crowdfrica now hosts young entrepreneurs innovating for COVID-19 response in the Ashanti and Western Regions of Ghana! Entrepreneurs on our platform complete an 8-week entrepreneurial training program from our partners iCode and Kumasi Hive so they have the business skills necessary to maximize their funding. The 8-week course includes an in-depth overview of crowdfunding as a tool for business growth and a deep dive into business fundamentals. Are you an entrepreneur interested in joining our platform and receiving fee training? Apply here <a
+      href="https://docs.google.com/forms/d/e/1FAIpQLScsnEGuUlp22Zu-d7yw6-qfticFNUPosUyGctD7LEO4GR9EeQ/viewform"
+      target="_blank">here</a>.
+  </p>
+    This project is part of the United Nations Capital Development Fund’s “Boosting Green Employment and Enterprise Opportunities in Ghana – (GrEEn)”, which is a four-year action aimed at creating greater economic and employment opportunities for youth, women and returning migrants by promoting and supporting sustainable, green businesses in the Ashanti and Western regions of Ghana. The project is implemented by UNCDF and SNV Netherlands Development Organization under the European Union Emergency Trust Fund for Africa. Learn more <a
+      href="https://www.uncdf.org/green"
+  <p>
+    Crowdfrica now hosts young entrepreneurs innovating for COVID-19 response in the Ashanti and Western Regions of
+    Ghana. Want to join our platform and receive free entrepreneurial training from our partners iCode and Kumasi
+    Hive? Apply here. This project is supported by the United Nations Capital Development Fund, SNV Netherlands
+    Development Organization, and the European Union Emergency Trust Fund (EUTF) for Africa. Learn more <a
+      href="https://www.uncdf.org/article/5733/on-international-day-of-family-remittances-uncdf-launches-a-crowdfunding-platform-under-the-green-project-in-ghana"
+      target="_blank">here</a>.
+    </p>
+  <% end %>
+  <div class="row">
+    <% if @category.projects.any? %>
+      <% @category.projects.each do |project| %>
+        <%= render 'campaigns/card', obj: project.campaign if project.campaign&.published? %>
+      <% end %>
+    <% else %>
+      <div>
+        <p>
+          Thank you for your interest in donating to support 
+          <strong>
+            <em
+            class="links"><%= @category.category_name %>  
+            </em>
+          </strong>. 
+            We are currently searching for
+            qualified
+            candidates. In the meantime,
+          <strong>
+            <em
+            class="links">
+              <%= link_to " please click here to support someone seeking Health Insurance",
+                category_projects_path(Category.find_by(category_name: "Health Insurance")), class: "links"%>  
+            </em>
+            </strong>. 
+              <%= "or click this banner below to help support crowdfrica's
+                operational expenses" unless @crowdfrica.nil? %>
+          Thank you for your interest in donating to support <strong><em
+              class="links"><%= @category.category_name %></em></strong>. We are currently searching for
+          qualified
+          candidates. In the meantime,
+          <strong><em
+              class="links">
+                <%= link_to " please click here to support someone seeking Health Insurance",
+                     category_projects_path(Category.find_by(category_name: "Health Insurance")), class: "links"%></em></strong>. <%= "or click this banner below to help support crowdfrica's
+                     operational expenses" unless @crowdfrica.nil? %>
+        </p>
+      </div>
+      <%= render 'shared/donation_banner', obj: @crowdfrica %>
+    <% end %>
+  </div>
+</div>

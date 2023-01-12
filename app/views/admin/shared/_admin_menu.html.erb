@@ -1,0 +1,21 @@
+<div class="sidenav">
+  <div>
+    <%= link_to  root_path  do %>
+      <%= image_tag "crowdfrica_logo.png", class: 'img-responsive' %>
+    <% end %>
+  </div>
+  <li><h1> Dashboard  </h1></li>
+
+  <li><%= link_to 'Overview',              admin_user_root_path         %> </li>
+  <li><%= link_to 'USSD Donations',        admin_donations_path(p: 'emergent') %> </li>
+  <li><%= link_to 'Paypal Donations',      admin_donations_path(p: 'paypal') %></li>
+  <li><%= link_to 'Squareup Donations',    admin_donations_path(p: 'squareup') %></li>
+  <li><%= link_to 'Settings',              admin_settings_path                   %> </li>
+  <li><%= link_to 'New Project',           admin_restricted_new_project_path     %> </li>
+  <li><%= link_to 'Projects',              admin_restricted_all_projects_path    %> </li>
+  <li><%= link_to 'New Category',          new_admin_category_path               %> </li>
+  <li><%= link_to 'Championships',         admin_championships_path %> </li>
+  <li><%= link_to 'Championship Requests', admin_championship_requests_path %> </li>
+  <li><%= link_to 'Categories',            admin_restricted_all_categories_path %> </li>
+  <li><%= link_to 'Blog Posts',            admin_blog_posts_path %> </li>
+</div>

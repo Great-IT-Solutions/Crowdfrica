@@ -1,0 +1,2 @@
+$("#donors").html('<%=  escape_javascript(render :partial => 'donors', locals: { donors: @total_donors }) %>');
+$('.pagination a').attr('data-remote', 'true');

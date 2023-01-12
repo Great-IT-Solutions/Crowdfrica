@@ -1,0 +1,1 @@
+class EmergentException < StandardError; end

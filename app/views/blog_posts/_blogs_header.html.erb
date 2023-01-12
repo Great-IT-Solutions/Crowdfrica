@@ -1,0 +1,18 @@
+<div class="blog-header-container">
+  <div class="blogs-header">
+    <h1>Blog</h1>
+  </div>
+  <div class="blogs-nav">
+    <nav class="navbar navbar-default">
+      <div class="" id="myNavbar">
+        <ul class="nav navbar-nav custom-center d-flex">
+          <li class="<%= active_class(blog_posts_path) %>"><%= link_to "Home", blog_posts_path %></li>
+          <li class="<%= active_class(blog_health_path) %>"><%= link_to "Health", blog_health_path %></li>
+          <li class="<%= active_class(blog_education_path) %>"><%= link_to "Education", blog_education_path %></li>
+          <li class="<%= active_class(blog_fundraising_path) %>"><%= link_to "Fundraising", blog_fundraising_path %></li>
+          <li class="<%= active_class(blog_success_path) %>"><%= link_to "Success Stories", blog_success_path %></li>
+        </ul>
+      </div>
+    </nav>
+  </div>
+</div>

@@ -1,0 +1,309 @@
+/* Display Cards */
+
+.Box {
+  /*padding:34px;*/
+}
+
+.campaign-card-small {
+  border: 1px solid #F1EEEA;
+  background: #ffffff;
+  border-radius: 3px;
+  text-align: left;
+  margin-bottom: 1em;
+  position: relative;
+  box-shadow: 0 3px 0 0 rgba(0, 0, 0, 0.025);
+}
+
+.campaign-img {
+  img {
+    height: 215px;
+    width: 100%;
+    background-size: cover;
+    background-position: center center;
+    position: relative;
+    border-radius: 2px 2px 0 0;
+    position: relative;
+  }
+}
+
+.campaign-title {
+  text-align: left;
+  padding-bottom: 2px;
+  margin: 8px;
+  font-weight: bolder;
+  height: 20px;
+  font-family: 'Noto Sans', sans-serif;
+}
+
+.campaign-brief {
+  margin-bottom: 5px;
+  padding: 8px 9px 0px;
+  text-align: left;
+  line-height: 1.4;
+  height: 108px;
+  font-family: 'Noto Sans', sans-serif;
+  font-size: 1.186rem;
+  overflow: hidden
+
+}
+
+
+.Provider-id {
+  padding: 0 14px;
+  font-size: 1.100rem;
+  line-height: 1.4;
+  height: 40px;
+  overflow: hidden;
+}
+
+.progress-card {
+  margin: 10px;
+  border: 0px solid green;
+  background: #dcdcdc;
+  height: 7px;
+  border-radius: 4px;
+
+  .progress-bar {
+    //background: #ff5103;
+    border-radius: 4px;
+  }
+
+}
+
+.campaign-data {
+
+}
+
+.glyphicon {
+  color: #5cb85c;
+}
+
+.c-Account-id {
+  margin: 8px;
+}
+
+.campaign-data {
+  margin: 8px;
+  text-align: center;
+
+}
+
+.social {
+  text-align: center;
+}
+
+.social span {
+  padding: 15px 15px;
+  font-size: 35px;
+}
+
+.campaign-img-holder {
+  background-color: #7F7F7F;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.campaign-img-holder img {
+  margin: auto;
+}
+
+.white-box {
+  padding: 20px;
+  border-radius: 4px;
+}
+
+.donation-text-box > input {
+  padding-left: 40px;
+}
+
+.donation-text-box .btn {
+  border-radius: 0;
+}
+
+.grey-background {
+  background-color: #E9E9E9;
+}
+
+.round-icon {
+  border-radius: 50%;
+}
+
+.crwd-nav {
+  margin: 10px;
+  height: 43px;
+  border-bottom: 3px solid #ffede5;
+}
+
+@media (max-width: 767px) {
+  .crwd-nav {
+    font-size: 0.6em;
+    height: 34px;
+  }
+}
+
+.crwd-nav > ul > li.active {
+  border-bottom: 3px solid #ff5103;
+  border-radius: 0;
+}
+
+.crwd-nav > ul > li.active i {
+  color: #ff5103;
+}
+
+.crwd-nav > ul > li.active > a, .crwd-nav > ul > li.active > a:hover, .crwd-nav > ul > li.active > a:active, .crwd-nav > ul > li.active > a:focus {
+  background: none;
+  color: #000;
+}
+
+.crwd-nav > ul > li > a {
+  color: #000;
+}
+
+.campaign_story {
+  padding: 0 20px;
+}
+
+.campaign_story .table-responsive {
+  margin-top: 10px;
+  border: none;
+}
+
+.side-bar {
+  border: 1px solid #ddd;
+}
+
+.dollar-icon {
+  position: absolute;
+  color: #449D43;
+  background: #eee;
+  padding: 6px 10px;
+  border: 1px solid #ddd;
+  z-index: 4;
+}
+
+.anonymous-donor {
+  display: inline-block;
+  margin-right: 8px;
+}
+
+.campaign-show .progress-card {
+  margin: 10px 0px;
+}
+
+.campaign-show .progress-card .progress-bar-warning {
+  background-color: #ff5103;
+}
+
+.grey {
+  color: #7F7F7F;
+}
+
+.avatar_container {
+  margin-top: 8px;
+}
+
+.mini-profile-pic {
+  width: 100%;
+  height: 100%;
+}
+
+.campaign-show .description {
+  font-size: 16px;
+}
+
+a.btn-facebook-wide, a.btn-facebook-wide:hover {
+  background: #1877F1;
+  color: #fff;
+}
+
+a.btn-whatsapp-wide, a.btn-whatsapp-wide:hover, a.btn-whatsapp-wide:focus {
+  background: #34af23;
+  color: #fff;
+}
+
+a.btn-twitter-wide, a.btn-twitter-wide:hover {
+  background: #55ACEE;
+  color: #fff;
+}
+
+.social-link {
+  float: left;
+  margin-right: 5px;
+}
+
+@media (max-width: 767px) {
+  .btn-donate {
+    margin-top: 5px;
+  }
+}
+
+.crwd-text-color {
+  color: #ff5103;
+}
+
+.facebook-icon-new {
+  width: 48px;
+}
+
+.facebook-icon-smaller {
+  width: 14px;
+  margin-top: -2px;
+}
+
+.facebook-icon-small {
+  width: 20px;
+  margin-top: -4px;
+}
+
+.donor-img {
+  max-width: 100%;
+  max-height: 100%;
+
+}
+
+.videos-container {
+  video {
+    width: 100%;
+    height: auto;
+  }
+}
+
+.trix-content figure.attachment--file {
+  border: none;
+}
+
+figure.attachment--file a.attachment-link {
+  color: #337ab7;
+  text-decoration: underline;
+}
+
+.default-image {
+  text-align: center;
+  height: 500px;
+  background: #fff;
+  border: 1px solid #ddd;
+  border-radius: 3px;
+
+  img {
+    margin-top: 175px;
+  }
+
+  h3 {
+    color: #FE5102;
+  }
+}
+
+.MOMO {
+  margin-top: 20px;
+}
+
+.mtn {
+  img {
+    width: 60px;
+  }
+}
+
+.USSD {
+  text-align: center;
+  padding-bottom: 10px;
+}

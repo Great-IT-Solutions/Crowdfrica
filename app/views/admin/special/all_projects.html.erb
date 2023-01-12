@@ -1,0 +1,17 @@
+<% provide(:title, "Admin Area") %>
+<h2> All Projects</h2>
+<% if @projects.any? %>
+  <% @projects.each do |project| %>
+    <ul class="ul-list-remove-padding">
+      <li><%= project.project_name  %> <em><%= link_to 'create campaign from here', new_admin_campaign_path(project: project.id) if !project.campaign %></em> </li>
+      <%= link_to 'Revisit Project', edit_admin_project_path(project), class: 'btn btn-md btn-info' %>
+      <%= link_to 'Delete Project', admin_project_path(project), class: 'btn btn-md btn-danger', method: :delete, data: { confirm: "Deleting this project, deletes it's associated campaign. Are you sure ?" } %>
+      <%= link_to 'Edit Campaign', edit_admin_campaign_path(project.campaign, project: project.id), class: 'btn btn-md btn-success' if project.campaign %>
+      <%= link_to 'Preview Campaign', admin_preview_campaign_path(project.campaign), class: 'btn btn-md btn-warning' if project.campaign  %>
+      <%= link_to 'Edit Beneficiary', edit_admin_beneficiary_path(project.beneficiary), class: "btn btn-md btn-success" if project.beneficiary %>
+    </ul>
+  <% end %>
+<% else %>
+  <em> No projects exist at the moment,<%= link_to 'you can create a new project from here', new_admin_project_path %> </em>
+<% end %>
+<%= will_paginate @projects %>

@@ -1,0 +1,10 @@
+<section class="classroom_projects-cards">
+  <% if classroom_supplies.any? %>
+         <div class="container Box">
+          <h3 class="category"> Classroom Supplies </h3>
+        <% classroom_supplies.each do |cr_campaign| %>
+               <%= render 'campaigns/card', obj: cr_campaign %>
+           <% end %>
+          </div>
+  <% end %>
+</section>

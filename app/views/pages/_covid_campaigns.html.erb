@@ -1,0 +1,10 @@
+<section class="covid19-cards">
+ <% if covids.any? %>
+         <div class="container Box">
+         <h3 class="category"> Enrepreneurs </h3>
+          <% covids.each do |covid_campaign| %>
+                <%= render 'campaigns/card', obj: covid_campaign %>
+           <% end %>
+         </div>
+ <% end %>
+</section>

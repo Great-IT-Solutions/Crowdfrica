@@ -1,0 +1,16 @@
+<h2>Add Project Category</h2>
+<%= form_for @category, url: { action: 'create' } do |f| %>
+  <div class='fields'>
+    <%= f.label :category_name %><br />
+    <%= f.text_field :category_name, autofocus: true, required: true %><br />
+  </div>
+
+  <div class='fields'>
+    <%= f.label :category_description %><br />
+    <%= f.text_area :category_description, size: '60x12', required: true %><br />
+  </div>
+
+  <div class='actions'><br />
+    <%= f.submit  class: 'btn btn-md btn-info' %>
+  </div>
+<% end %>

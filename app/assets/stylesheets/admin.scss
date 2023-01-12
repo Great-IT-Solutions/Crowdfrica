@@ -1,0 +1,15 @@
+.admin {
+  nav {
+    margin: 10px 10px 0 0;
+  }
+
+  .new_admin_user {
+    input[type="text"], input[type="email"], input[type="password"] {
+      width: 300px;
+    }
+  }
+
+  .actions {
+    margin-top: 15px;
+  }
+}

@@ -1,0 +1,22 @@
+<div class="champ-index-titles">
+  <h1>Active Championships</h1>
+  <% if @championships.count == 0 %>
+    <p>There are no Championships</p>
+  <% end %>
+  <%= link_to "Create A Championship", new_admin_championship_path, class:"champ-control-btns" %>
+</div>
+<% @championships.each do |championship| %>
+  <div class="champ-index">
+    <p>Champion: <%= link_to championship.champion.fullname, donor_path(championship.champion) %></p>
+    <p>Champion Email: <%= championship.champion.email %></p>
+    <p>Beneficiary Name: <%= championship.campaign.beneficiary.beneficiary_name %></p>
+    <p>Campaign Name: <%= link_to championship.campaign.campaign_name, campaign_path(championship.campaign) %></p>
+    <p>Relationship to Beneficiary: <%= championship.relationship %></p>
+    <p>Championship Message: <%= championship.message %></p>
+    <%= link_to 'Delete Championship', admin_championship_path(championship), method: :delete,
+          data: { confirm: 'Are you sure you want to delete this championship' }, class: 'champ-control-btns' %>
+    <%= link_to 'Edit Championship', edit_admin_championship_path(championship), class: 'champ-control-btns' %>
+  </div>
+<% end %>
+
+<%= will_paginate @championships, renderer: BootstrapPagination::Rails, previous_label: 'Previous', next_label: 'Next' %>

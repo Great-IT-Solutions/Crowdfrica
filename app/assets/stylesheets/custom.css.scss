@@ -1,0 +1,328 @@
+$size: 30px;
+.pos-abs {
+  position: absolute;
+  top: 100px;
+  z-index: 2;
+}
+
+.social-share-button {
+  .ssb-icon {
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: $size $size;
+    display: inline-block;
+    height: $size;
+    width: $size;
+  }
+}
+
+.Share1 {
+  margin-left: -30px;
+  margin-top: 20px;
+}
+
+.Icons1 {
+  margin-left: -30px;
+  margin-top: 15px;
+}
+
+@import "bootstrap-sprockets";
+@import "bootstrap";
+@import "social-share-button";
+
+/*
+==============================================
+Bootstrap Nav Css
+==============================================
+*/
+
+.navbar-fixed-top {
+  min-height: 55px;
+}
+
+.navbar-nav>li.active {
+  border-bottom: 4px solid #ff5103;
+}
+
+.navbar-nav>li>a {
+  padding-top: 0px;
+  padding-bottom: 0px;
+  line-height: 30px;
+  font-family: 'Open Sans', sans-serif;
+}
+
+@media screen and (max-width: 767px) {
+  .navbar-nav>li.active {
+    border-bottom: none;
+  }
+  .navbar-nav>li>a {
+    line-height: 20px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+    text-align: center;
+  }
+}
+
+.navbar-right {
+  margin-top: 12px;
+  padding-right: 170px;
+  font-size: 12px;
+}
+
+.navbar-toggle {
+  margin-top: 20px;
+}
+
+.nav {
+  padding-left: 0;
+}
+
+#crowdfricanavbar a {
+  color: #191919;
+  font-family: 'Open Sans', sans-serif;
+}
+
+.nav-donor-img {
+  width: 50px;
+  height: 50px;
+  margin-right: 10px;
+  display: inline-block;
+  img {
+    width: 100%;
+    height: 100%;
+    border-radius: 50%;
+  }
+}
+
+.submit-campaign-btn,
+.talk-us-btn {
+  color: #ff5103;
+  text-align: center;
+  border: 1px solid #ff5103;
+  background-color: #faf0ec;
+  border-radius: 3px;
+  font: size 0.999em;
+}
+
+.drop {
+  cursor: pointer
+}
+
+#logoId {
+  height: 220%;
+}
+
+.icon-bar {
+  background-color: #ff5103;
+}
+
+.category {
+  margin-left: 10px
+}
+
+.avatar-wrap {
+  padding: 0px
+}
+
+.avartar {
+  line-height: 46px;
+  font-size: 46px;
+}
+
+.avatar_container.profile_48x48 {
+  width: 48px;
+  height: 48px;
+  display: inline-block;
+  margin-bottom: 5px;
+}
+
+.avatar_container {
+  // border-radius: 50%;
+  position: relative;
+  vertical-align: top;
+}
+
+.avatar_container .avatar_cover,
+.avatar_container .spinner {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  opacity: 0;
+}
+
+.avatar_container.profile_48x48 .avatar {
+  line-height: 48px;
+  font-size: 26px;
+}
+
+.avatar_container .avatar {
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  color: #FFFFFF;
+  display: block;
+}
+
+.alink:hover {
+  text-decoration: none
+}
+
+.container {
+  padding-left: 0px;
+  padding-right: 0px;
+}
+
+.anony {
+  cursor: default
+}
+
+.donor_list .avatar {
+  display: inline-block;
+  margin-right: 8px;
+  margin-bottom: 8px;
+  vertical-align: top;
+}
+
+.avatar_container.profile_48x48 {
+  margin-right: 8px;
+}
+
+.grey {
+  -webkit-filter: grayscale(100%);
+  /* Safari 6.0 - 9.0 */
+  filter: grayscale(100%);
+}
+
+.container-fluid {
+  padding-right: 47px
+}
+
+.user {
+  padding-right: 6px;
+  color: #ff5102;
+}
+
+.popover-content {
+  color: #ff5103;
+}
+
+.ul-list-remove-padding {
+  padding: 0px;
+}
+
+.donate-btn {
+  text-align: center;
+}
+
+.btn-on-card {
+  width: 73%;
+  margin-bottom: 10px;
+}
+
+.btn-danger,
+.btn-info,
+.btn-success,
+.btn-warning {
+  font-weight: bolder;
+}
+
+.links {
+  text-decoration: none;
+  color: #fe5103;
+}
+
+.links:hover {
+  text-decoration: none;
+  color: #fe5103;
+  cursor: pointer;
+}
+
+.curvy {
+  border-radius: 10px;
+}
+
+.social_icons {
+  cursor: pointer;
+}
+
+.paginate {
+  text-align: center;
+}
+
+.nav>li>a:hover,
+.nav>li>a:focus {
+  text-decoration: none;
+  background-color: transparent;
+  outline: none;
+}
+
+.gift-header {
+  // text-align: center;
+}
+
+.support {
+  display: none
+}
+
+.btn-success {
+  border-color: transparent;
+}
+
+.expedite {
+  padding-bottom: 20px;
+  margin-top: 20px;
+}
+
+th {
+  text-align: center;
+}
+
+.th-exception {
+  text-align: left;
+}
+
+tr.project-info {
+  cursor: pointer;
+}
+
+tr.project-info:hover {
+  background-color: red;
+}
+
+.table-hover>tbody>tr:hover {
+  background-color: rgba(255, 235, 59, 0.56);
+}
+
+.head {
+  background-color: #222;
+}
+
+.hl {
+  color: #fff;
+}
+
+.popover-content {
+  word-wrap: break-word;
+}
+
+.or {
+  text-align: center;
+  margin: 15px;
+  h5 {
+    margin-bottom: 20px;
+  }
+}
+
+.terms_warn {
+  margin-top: 65px;
+  text-align: left;
+}
+
+.last-campaigns-btn {
+  margin-bottom: 175px;
+}
+
+.talk-to-us-section {
+  margin-top: 80px;
+  margin-bottom: 50px;
+}

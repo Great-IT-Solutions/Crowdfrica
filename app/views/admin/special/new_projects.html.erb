@@ -1,0 +1,21 @@
+<% provide(:title, 'New Project') %>
+<h2>New Project</h2>
+<pre>Use either of ff. ways  to add a new project
+  <ul>
+    <li><%= link_to 'Create project beneficiary', new_admin_beneficiary_path, class: "btn btn-md btn-info"  %>
+Use this, if you need to create a project for a new or non existing beneficiary
+    </li>
+    <li><%= link_to 'Create project for an existing beneficiary', new_admin_project_path, class: "btn btn-md btn-info"  %>
+Use this, if you need to create a new project for an existing beneficiary
+    </li>
+and Voila! you just have just started a crowdfund for the needy
+  </ul>
+</pre>
+
+<%= form_for :new_donation, url: { action: 'new_donation' } do |f| %>
+  <div class="field">
+    <%= f.label :project_id, 'Project ID' %><br />
+    <%= f.text_field :project_id, autofocus: true, required: true, class: 'form-control' %><br />
+    <%= f.submit 'New Donation', class: 'btn btn-crwd-primary' %>
+  </div>
+<% end %>

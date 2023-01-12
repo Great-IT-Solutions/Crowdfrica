@@ -1,0 +1,80 @@
+<% provide(:title, 'Blog') %>
+<%= render 'blogs_header' %>
+<% if @recent_posts.empty? %>
+  <div class="text-center">
+    <h3>No post here yet!</h3>
+  </div>
+<% else %>
+  <div class="container blog-index-container">
+    <div class="row">
+      <div class="col-md-9 all-post-col">
+        <div class="recent-posts">
+          <h3 class="section-title">Recent Articles</h3>
+          <div class="media most-recent-post">
+            <% latest_post = @recent_posts.first %>
+            <%= link_to blog_post_path(latest_post) do %>
+              <%= image_tag latest_post.image_url, alt: "Blog image", class: "pull-left" if latest_post.image_url %>
+            <% end %>
+            <div class="media-body">
+              <h4 class="mt-0 media-title"><%= latest_post.title %></h4>
+              <%= latest_post.summary %>
+              <p class="card-text"><small class="text-muted"><%= time_ago_in_words(latest_post.created_at) %> ago</small></p>
+            </div>
+            <%= link_to "Read more", blog_post_path(latest_post), class: "btn btn-crwd-primary"  %>
+          </div>
+          <div class="card-group row">
+            <% @recent_posts[1..].each do |post| %>
+              <div class="col-md-4 recent-post">
+                <div class="card">
+                  <%= link_to blog_post_path(post) do %>
+                    <%= image_tag post.image_url, alt: "Blog image", class: "card-img-top img-responsive" if post.image_url %>
+                  <% end %>
+                  <div class="card-body">
+                    <h4 class="card-title"><%= post.title %></h4>
+                    <p class="card-text"><%= post.summary %></p>
+                    <p class="card-text"><small class="text-muted"><%= time_ago_in_words(post.created_at) %> ago</small></p>
+                    <%= link_to "Read more", blog_post_path(post), class: "btn btn-crwd-primary"  %>
+                  </div>
+                </div>
+              </div>
+            <% end %>
+          </div>
+        </div>
+        <div class="older-posts row">
+          <h3 class="section-title">Older Articles</h3>
+          <div class="col-md-12">
+            <% @older_posts.each do |post| %>
+              <div class="media">
+                <%= link_to blog_post_path(post) do %>
+                  <%= image_tag post.image_url, alt: "Blog image", class: "img-responsive" if post.image_url%>
+                <% end %>
+                <div class="media-body">
+                  <h4 class="mt-0 media-title"><%= post.title %></h4>
+                  <%= post.summary %>
+                </div>
+                <%= link_to "Read more", blog_post_path(post), class: "btn btn-crwd-primary"  %>
+              </div>
+            <% end %>
+            <div class="text-center">
+              <%= will_paginate @older_posts, renderer: BootstrapPagination::Rails, previous_label: "Previous", next_label: "Next" %>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-md-3 side-bar">
+        <div class="card">
+          <%= link_to "#" do %>
+            <h4 class="text-center">Fundraising Resources</h4>
+            <%= image_tag "fundraising.jpg", alt: "fundraising image", class: "card-img-top hidden-xs hidden-sm" %>
+          <% end %>
+        </div>
+        <div class="card">
+          <%= link_to "#" do %>
+            <h4 class="text-center">Fundraising Tips</h4>
+            <%= image_tag "fundraising2.jpg", alt: "fundraising image", class: "card-img-top hidden-xs hidden-sm" %>
+          <% end %>
+        </div>
+      </div>
+    </div>
+  </div>
+<% end %>

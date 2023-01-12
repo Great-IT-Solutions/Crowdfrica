@@ -1,0 +1,24 @@
+{
+  "private": true,
+  "dependencies": {
+    "@rails/actiontext": "^6.0.3-5",
+    "@rails/webpacker": "^5.2.1",
+    "stimulus": "^1.1.1",
+    "trix": "^1.2.0"
+  },
+  "devDependencies": {
+    "webpack": "^4.44.2",
+    "webpack-dev-server": "^3.11.0"
+  },
+  "scripts": {
+    "start:dev": "bin/webpack-dev-server"
+  },
+  "babel": {
+    "presets": [
+      "@babel/preset-env"
+    ],
+    "plugins": [
+      "@babel/plugin-proposal-class-properties"
+    ]
+  }
+}

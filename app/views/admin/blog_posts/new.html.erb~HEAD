@@ -1,0 +1,2 @@
+<% provide(:title, "New Blog Post") %>
+<%= render partial: 'form', locals: { action: 'create' } %>

@@ -1,0 +1,20 @@
+<%= content_for :head do %>
+  <script src=<%= "https://www.paypal.com/sdk/js?client-id=#{ENV['PAYPAL_CLIENT_ID']}&components=buttons&disable-funding=paylater" %>></script>
+<% end %>
+
+
+<div id="paypal" data-controller="paypal" data-target="payment-selector.form" class="col-md-12" style="display: none">
+  <%= form_tag root_path, method: 'post', id: 'paypal_form' do %>
+
+    <%= render 'payment_form',
+               amount: amount,
+               payment_method: 'paypal'
+    %>
+
+    <%= hidden_field_tag :campaign_id, @campaign.slug, name: 'campaign_id' %>
+
+    <!-- The button will be rendered in this div. See paypal_controller.js -->
+    <div id="paypal-button-container"></div>
+    
+  <% end %>
+</div>

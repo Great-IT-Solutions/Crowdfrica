@@ -1,0 +1,31 @@
+<% provide(:title, "Donations For #{@project.beneficiary.beneficiary_name}") %>
+<h1>Listing Donors</h1>
+Project Name    : <%= @project.project_name %><br />
+Beneficiary Name: <%= @project.beneficiary.beneficiary_name %>
+
+<table style="width: 100%;" class = "table table table-condensed table-hover">
+  <thead>
+    <tr class="head">
+      <th></th>
+      <th class="hl">Donor </th>
+      <th class="hl">Email </th>
+    </tr>
+  </thead>
+  <tbody>
+    <% @donors.each do |donor| %>
+      <tr>
+        <td align="center" style="vertical-align: middle;">
+          <%= link_to donor_path(donor), class: "links" do %>
+            <p>
+              <div class="ava" style="background-color:<%= donor.color %>;padding: 18px 0;border-radius: 50%; min-width: 26px; max-width: 56px">
+                <span style="color: #fff;"> <b><%= donor.initials %> </b></span>
+              </div>
+            </p>
+          <% end %>
+        </td>
+        <td  align="center" title="<%= donor.fullname %>" style="vertical-align: middle;"><p><%= donor.fullname.upcase.truncate(30)%></p></td>
+        <td  align="center" title="<%= donor.email %>" style="vertical-align: middle;"><p><%= donor.email.truncate(30) %></p></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

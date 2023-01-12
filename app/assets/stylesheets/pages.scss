@@ -1,0 +1,387 @@
+// Place all the styles related to the pages controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+.sidenav {
+   // position: fixed;
+    width: 20%;
+    // height: 100%;
+    float: left;
+    top: 0px;
+    background-color: black;
+    padding: 10px 10px;
+    color: white;
+    overflow: scroll;
+}
+
+.sidenav li {
+	// display: block;
+	padding: 20px 20px;
+    text-align: left;
+	a {
+		text-decoration: none;
+		color: white;
+		cursor: pointer;
+	}
+}
+
+/*
+==============================================
+WOW IT WORKS PAGE
+==============================================
+*/
+
+.HowItWorks {
+	/*border: 1px solid black;*/
+	text-align: center;
+}
+
+.embed-responsive-item {
+	padding:15px;
+	text-align: center;
+
+}
+
+/* centered columns styles */
+.row-centered {
+    text-align:center;
+    margin-top:50px;
+}
+
+.col-centered {
+    display:inline-block;
+    float:none;
+
+ }
+
+ .share{
+ 	font-family: 'Gabriela', serif;
+  	font-size:18px;
+ }
+
+/* button */
+
+.btn-xlarge {
+	font-size: 1.0em;
+	background-color: black;
+}
+
+
+/*FAQ*/
+
+.FAQs_heading {
+	margin-bottom:20px;
+	h2{
+	text-align: center;
+	margin-bottom:10px;
+	}
+	h4{
+	text-align: center;
+	}
+
+}
+
+.contact_form {
+	padding-bottom: 20px;
+}
+
+
+.FaqRapper {
+	border: 2px solid #dcdcdc;
+	background: #ffffff;
+	heigth: 400px;
+	border-radius: 3px;
+	text-align: left;
+	padding: 10px;
+	margin-bottom: 1em;
+	position: relative;
+	box-shadow: 10px 10px 10px 5px #dcdcdc;
+	font-family: 'Noto Sans', sans-serif;
+	FaqBox {
+		padding:10px;
+		font-family: 'Droid', serif;
+  		font-size:15px;
+
+	}
+}
+
+
+.i-space {
+  float: none;
+  margin: auto;
+  padding-top: 30px;
+}
+.founding_img{
+	img{
+		height: 100%;
+		width:100%;
+
+	}
+}
+
+
+.table-responsive{
+	margin-top: 100px;
+}
+
+.profile_img{
+	margin:8px;
+}
+
+.profile_story{
+	margin: 8px;
+}
+
+.Share2{
+	margin:4px;
+}
+
+/*
+==============================================
+The Team PAGE
+==============================================
+*/
+.team-pics {
+  margin-bottom: 30px;
+  overflow: auto;
+  h2 {
+    margin-bottom: 50px;
+  }
+}
+
+.The_Team{
+	margin: 100px 0 50px 0;
+	h2{
+		margin-top: 100px;
+		margin-bottom: 50px;
+	}
+
+}
+
+.team-join{
+	margin-top:30px;
+	text-align: center;
+	padding: 10px;
+  .join-btn {
+    width: 80%;
+    padding: 15px 0;
+    margin-bottom: 20px;
+  }
+}
+
+.our_Advisors{
+	h2{
+		margin: 50px;
+	}
+}
+
+.Volunteers{
+	margin-bottom: 100px;
+	text-align: center;
+  overflow: auto;
+	h2{
+		margin: 50px;
+	}
+}
+
+.h2 {
+	margin-bottom:  20px;
+}
+.our_Advisors {
+
+}
+.imgAdvisors{
+	/*border: 1px solid red;*/
+	text-align: center;
+  padding-top: 20px;
+	img {
+		height:180px;
+		width: 180px;
+	}
+}
+
+.wicon {
+  display: block;
+  margin: 0 auto;
+  width: 5em;
+  height: 5em;
+}
+
+.Advisors-title {
+	text-align: center;
+	margin: 8px;
+	font-weight: bolder;
+  	font-size:30px;
+	  color: #ff5103;
+	  a {
+		  color: inherit;
+	  }
+
+}
+
+.Advisors-brief {
+	margin: 8px;
+	text-align: center;
+	line-height: 1.4;
+  	font-size:15px;
+}
+
+.FoundingS{
+	margin-top: 5px;
+	text-align: center;
+}
+
+
+.TeamBanner {
+	text-align:center;
+	img {
+    width: 95%;
+		margin-top:30px;
+		margin-bottom:20px;
+    border-radius: 5px;
+	}
+}
+
+
+/*
+==============================================
+GivingTuesday PAGE
+==============================================
+*/
+
+.bigview{
+	background-color:#fbf8f8;
+}
+
+.GivingClassroomday{
+	text-align: center;
+	margin-bottom: 20px;
+}
+
+.givingImage{
+	margin-right:5px;
+
+	img{
+		height:450px;
+		width: auto;
+
+	}
+
+}
+
+.givingText{
+
+	height:450px;
+	h2{
+		color: #ff5103;
+	}
+
+}
+
+.monthly-button {
+	margin-top: 20px;
+}
+
+
+.givingStory{
+	font-size: 2rem;
+	margin-top: 50px;
+	text-align: center;
+}
+
+.givingmsg{
+	text-align: left;
+	font-size: 1.7rem;
+	padding-left: 180px;
+	padding-right: 130px;
+
+
+}
+
+.giveToday-button{
+	text-align: center;
+	margin-top: 30px;
+	margin-bottom:100px;
+
+}
+
+
+.akoto-abt {
+	background-image: asset-url('richard2.jpg');
+	height: 373px;
+	width: 560px;
+	border-radius: 4px;
+    margin-bottom: 0;
+}
+
+
+.address_warn{
+	color: red;
+}
+
+.Givingpartner{
+	img{
+		height: 100px;
+
+	}
+}
+
+.Givingpartner1{
+	img{
+		height: 100px;
+		widith: 317px;
+	}
+
+}
+
+.Givingpartner2{
+	img{
+		height: 100px;
+		widith: 317px;
+	}
+}
+
+.Givingpartner3{
+	img{
+		height: 100px;
+		widith: 317px;
+	}
+}
+
+.thanks-h1 {
+	text-align: center;
+}
+
+.thanks-body {
+	width: 90%;
+	margin-left: auto;
+	margin-right: auto;
+}
+
+footer {
+	margin-top: 90px;
+}
+
+.thank-you-socials {
+	margin-left: 45%;
+}
+
+
+/*
+==============================================
+ABOUT US-PARTNERSHIP PAGE
+==============================================
+*/
+
+.Partnership{
+	margin-top: 50px;
+	.logos {
+		height: 200px;
+		background-position: center;
+		background-repeat: no-repeat;
+		background-size: contain;
+	}
+	#green-logo {
+		background-image: asset-url('LOGO-GREEN.png');
+	}
+	
+}

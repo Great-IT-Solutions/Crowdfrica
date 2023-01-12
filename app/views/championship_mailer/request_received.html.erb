@@ -1,0 +1,24 @@
+<div class="container email-content">
+  <%= image_tag("crowdafrica_logo.png", id: "lv")%>
+
+  <hr>
+  <p>Hi <%= @championship_request.champion.fullname%>,</p>
+  <p>We are looking into your request to become <%= @championship_request.campaign.beneficiary.beneficiary_name%>'s Champion.</p>
+  <p>If you are approved you will recieve an email confirmation within the next few days.</p>
+  <p>In the meantime please share <%= @championship_request.campaign.beneficiary.beneficiary_name%>'s campaign as much as you can to help raise awareness.</p>
+
+  <%= image_tag('sincerely.png', id:"sincerely")%>
+  <p>Randy Caiquo</p>
+  <p>Founder and CEO</p>
+  <br>
+  <hr>
+  <p id="kati" style="text-align: center;">Follow us:
+    <a href="https://twitter.com/crowdfrica?lang=en" target="_blank">Twitter</a>
+    <a href="https://www.facebook.com/crowdfrica/" target="_blank">Facebook</a>
+    <a href="https://www.instagram.com/explore/tags/crowdfrica/" target="_blank">Instagram</a>
+  </p>
+  <p id="kati" style="text-align: center;">Need help? Contact Us.<br>
+    Crowdfrica.org, Impact Hub Accra, F393/3, Otswe Street, Osu, Accra-Ghana.
+  </p>
+
+</div>

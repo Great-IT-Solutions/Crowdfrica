@@ -1,0 +1,58 @@
+<nav class="navbar navbar-custom navbar-static-top">
+  <div class="container-fluid">
+    <div class="navbar-header">
+      <button type="button" class="navbar-toggle" data-toggle="collapse" data-target="#crowdfricanavbar">
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+        <span class="icon-bar"></span>
+      </button>
+      <%= link_to root_path, class: 'navbar-brand' do
+        image_tag 'crowdfrica_logo.png', id: 'logoId'
+      end
+      %>
+    </div>
+
+    <div class="collapse navbar-collapse" id="crowdfricanavbar">
+      <ul class="nav navbar-nav navbar-right">
+        <li class="<%= menu_active?(giftcard_path) %>">
+          <a href="/giftcard" class="drop"> <span class="glyphicon glyphicon-gift user"></span>Buy Gift card</a>
+        </li>
+        <li class="<%= menu_active?(about_path) %>"><%= link_to 'About Us', about_path, id: 'about-us-nav' %></li>
+        <li class="<%= menu_active?(path_starts_with: '/campaigns') %>"><%= link_to 'Campaigns', campaigns_path, id: 'campaigns-nav' %></li>
+        <li class="<%= menu_active?(howitworks_path) %>"><%= link_to 'How It Works', howitworks_path, id: 'how-it-works-nav' %></li>
+        
+
+        <% if donor_signed_in? %>
+          <li class="dropdown-toggle" data-toggle="dropdown">
+            <a class="drop">
+              <% if current_donor.profile_image? %>
+                <div class="nav-donor-img">
+                  <%= image_tag current_donor.image %>
+                </div>
+              <% else %>
+                <span class="glyphicon glyphicon-user user"></span>
+              <% end %>
+              <%= current_donor.fullname %>
+            </a>
+          </li>
+          <ul class='dropdown-menu'>
+            <li> <%= link_to 'My Profile', donor_path(current_donor) %></li>
+            <li> <%= link_to 'Settings', edit_donor_registration_path %></li>
+            <li> <%= link_to 'Sign Out', destroy_donor_session_path, :method => :delete %></li>
+          </ul>
+        <% else %>
+          <!-- Trigger the modal with a button -->
+          <!-- <li><%#= link_to 'Sign In', new_donor_session_path  if controller_name != 'sessions' %> </li> -->
+          <% if controller_name != 'sessions' %>
+            <li><a href="#" data-toggle="modal" data-target="#signinModal" id="sign-in-nav">Sign In</a></li>
+            <li><a href="#" data-toggle="modal" data-target="#signupModal">Sign Up</a></li>
+          <% end %>
+          <%# <li><a href="#"><span class="glyphicon glyphicon-user"></span>Login</li> %>
+        <% end %>
+          
+            <li class=""><a class="submit-campaign-btn" href="https://bit.ly/crowdfricaform">Submit a campaign </a></li>
+
+      </ul>
+    </div>
+  </div>
+</nav>

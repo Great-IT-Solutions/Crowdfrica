@@ -1,0 +1,48 @@
+<% provide(:title, 'Donations') %>
+
+<%= sanitize("<h1>USSD Donations</h1> Total Number of USSD Donations: #{@donations.count} <br />") if params[:p] == 'emergent'%>
+<%= sanitize("<h1>Paypal Donations</h1> Total Number of Paypal Donations: #{@donations.count} <br />") if params[:p] == 'paypal' %>
+<%= sanitize("<h1>Squareup Donations</h1> Total Number of Squareup Donations: #{@donations.count} <br />") if params[:p] == 'squareup' %>
+<div class="pull-right" style="margin-bottom: 10px;">
+  <div class="form-group margin-top-sm">
+      <%= link_to 'Export .csv'.html_safe, admin_donations_path(p: params[:p] || 'emergent', format: 'csv'), class:'btn btn-crwd-primary' %>
+  </div>
+</div>
+<table style="width: 100%;" class = "table table-condensed table-hover">
+  <thead>
+    <tr class="head">
+      <th class="hl">Project Name</th>
+      <th class="hl">Date </th>
+      <th class="hl">Donation ($)</th>
+      <% if params[:p] == 'emergent' %>
+        <th class="hl">Donation (GHS)</th>
+      <% end %>
+      <% if params[:p] == 'paypal' %>
+        <th class="hl">Tip($)</th>
+      <% end %>
+      <th class="hl">Anonymous </th>
+      <th class="hl">Donor </th>
+      <% if params[:p] == 'emergent' %>
+        <th class="hl">Mobile</th>
+      <% end %>
+      <th class="hl">Email </th>
+      <% if params[:p] == 'squareup' %>
+        <th class="hl">Tip Amount ($)</th>
+        <th class="hl">Tip Amount (GHS)</th>
+      <% end %>
+   </tr>
+ </thead>
+  <tbody id="donations">
+    <%== render partial: 'donation', locals: { donations: @donations } %>
+  </tbody>
+</table>
+
+<div class="USSD">
+  <%= will_paginate @donations, { link_options: {'data-remote': true }, params: { action: 'get_donations' }} %>
+</div>
+
+<script>
+  $(function(){
+    $('.pagination a').attr('data-remote', 'true')
+  });
+</script>

@@ -1,0 +1,152 @@
+<% provide(:title, "Crowdfunding For Healthcare and Education in Africa") %>
+
+<section class="home-banner">
+  <div class="row">
+    <div class="banner-container">
+      <div class="banner-text">
+        <h2> Africa's #1 fundraising platform  <br> for healthcare and education. </h2>
+        <h3> Raise funds for medical treatment or for a classroom in need .</h3>
+        <div>
+			<a href="https://bit.ly/crowdfricaform" id="story-btn" class="btn btn-crwd-primary btn-banner" role="button">Submit a campaign</a>
+
+		</div>
+  
+      </div>
+      <%= image_tag "banner_crowdfrica.png", :class => "banner-img" %>
+    </div>
+
+  </div>
+</section>
+
+<div class="secondLayer">
+         <div class="row">
+	        <div class="col-xs-12 col-md-12 main">
+                           <h1>Browse New Campaigns</h1>
+			<h5>Meet people and life-changing teachers in need of your support</h5>
+		    </div>
+        </div>
+</div>
+
+
+<%= render 'covid_campaigns', covids: campaign_samples(:entrepreneur) %>
+<%= render 'patient_campaigns', patients: campaign_samples(:patient) %>
+<%= render 'classroom_campaigns', classroom_supplies: campaign_samples(:classroom_supplies) %>
+
+ <div class= "col-md-12 centerbutton">
+       <div>
+             <p class="main"><%= link_to  'Campaigns', campaigns_path , class: "btn" %></p>
+      </div>
+</div>
+
+<section class="categories-cards">
+	<div class="row">
+		<div class="cat-card-title">
+			<h2><b>Find A Campaign To Support</b></h2>
+		</div>
+		<% if @categories.any? %>
+			<% @categories.each do |category| %>
+				<%= link_to category_projects_path(category), :id => "#{category.category_name.gsub(" ", "-")}" do %>
+					<div class="cat-card col-xs-12 col-sm-4 col-md-4">
+						<div class="cat-box <%= category.category_name.gsub(" ", "-") %>">
+						</div>
+						<div class="title-con">
+							<h2><%= category.category_name.upcase %></h2>
+						</div>
+					</div>
+				<% end %>
+			<% end %>
+		<% end %>
+	</div>
+</section>
+
+	<section class="story-sect">
+		<div class="container">
+			<div class="row">
+				<div class="col-md-6 col-sm-12 story-abt-team">
+					<h2><b>Impact Stories</b></h2>
+
+					<div class="story-abt-team2">
+
+
+To date over 1000 people have been funded and given access to life-changing healthcare on crowdfrica.org and 2000 people have been educated on community health issues and health insurance.
+					</div>
+					<div class="btn-box">
+						<a href="https://www.flickr.com/photos/137843048@N05" id="story-btn" class="btn btn-success" role="button">Impact Stories</a>
+
+					</div>
+
+				</div>
+				<div class="col-md-6 col-sm-12 success-stories">
+
+				</div>
+
+			</div>
+		</div>
+
+	</section>
+
+
+	<section class="storyUS">
+			<div class="row">
+				<div class="our-story-brief">
+
+				<h2 class="section-title"><b>Our Story</b></h2>
+				<div class="ids">
+	   			<p class="content">
+				   	   Randy, the founder of Crowdfrica was in his room when his mom came to him asking for GHS 20.00 ($5) to take his brother to get healthcare. He had no money on him and so he was unable to offer any. A week later, his brother died leaving them in shock and distraught. <%= link_to "Read full story", about_path, :class => "links" %>
+			   	</p>
+
+				</div>
+
+				</div>
+			</div>
+
+	</section>
+
+	<%= render "shared/how_it_works" %>
+
+	<section class="trasparentUS">
+			<div class="row">
+				<div class="trans">
+
+				<h2 class="section-title"><b>Our Efficiency & Transparency</b></h2>
+				<div class="ids">
+	   			<p class="content">
+                        We know that you care about how effectively your donation is being used. That's why we show you how every dollar was spent, how you made a difference, and how grateful the health workers, patients, teachers and students are. <%#  <a class="links" href="https://docs.google.com/spreadsheets/d/1LKnPkmPd2ORKsqvtGauFw1eCk6wo84GrX7_BK15UT_4/edit?usp=sharing" target="blank">View our documents.</a> %>
+			   	</p>
+
+				</div>
+
+				</div>
+			</div>
+
+	</section>
+
+
+<section>
+<div class="row">
+	<div class="centertext">
+	   	<div class="col-xs-12 col-sm-12 col-md-12" style="padding: 0px;">
+		   	<div class="indexspacing testimony">
+		   		<span>Testimony</span>
+			   	<p class="content">
+				        "Crowdfrica is revolutionizing the act of crowdfunding for the African continent. For the first time, funds are being raised by people who come from the same community and have a deep understanding of their needs and processes."
+
+				<div class="imgVolunteers">
+					<%= image_tag 'Emily.jpg', :class => "img-circle" %>
+				</div>
+
+		 		<div class="Advisors-title">
+		   			<h3> Emily Sheldon</h3>
+				</div>
+
+				<div class="Advisors-brief">
+		   			<p>Director of Health Innovation, Impact Hub Accra</p>
+				</div>
+			   	</p>
+		        </div>
+		</div>
+	</div>
+ </div>
+</section>
+<%= render "shared/our_values" %>

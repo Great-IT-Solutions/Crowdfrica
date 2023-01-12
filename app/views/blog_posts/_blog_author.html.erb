@@ -1,0 +1,10 @@
+<div class="blog-author">
+  <div class="media">
+    <%= image_tag "avatar.png", alt: "Blog image", size: "70x70", class:"pull-left img-circle" %>
+    <div class="media-body font-weight-bold">
+      <h5>WRITTEN BY</h5>
+      <h4 class="mt-0 author-name"><%= @post.author.fullname %></h4>
+      <p class="author-bio"><%= @post.author_bio %></p>
+    </div>
+  </div>
+</div>

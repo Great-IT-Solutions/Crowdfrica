@@ -1,0 +1,17 @@
+<% provide(:title, 'Currency Settings') %>
+<h1>Settings</h1>
+<% if Exrate.first %>
+   <p> last modified <%= Exrate.first.updated_at %> </p>
+<% end %>
+<%= form_for :exchange_rate, url: { action: 'settings'}, method: :put do |s| %>
+  <%= s.label :rate, 'GHS Rate' %>
+  <%= s.number_field :rate , min: '0', step: '0.01', placeholder: "last updated value was #{rate}", class: 'form-control', value: rate %>
+  <br/>
+  <%= s.label :ngn_rate, 'NGN Rate' %>
+  <%= s.number_field :ngn_rate , min: '0', step: '0.01', placeholder: "last updated value was #{ngn_rate}", class: 'form-control', value: ngn_rate %>
+  <br/>
+  <%= s.label :kes_rate, 'KES Rate' %>
+  <%= s.number_field :kes_rate , min: '0', step: '0.01', placeholder: "last updated value was #{kes_rate}", class: 'form-control', value: kes_rate %>
+  <br />
+  <%= s.submit 'Update Exchange Rate', class: 'btn btn-md btn-success' %>
+<% end %>

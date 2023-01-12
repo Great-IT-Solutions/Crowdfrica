@@ -1,0 +1,11 @@
+<% provide(:title, 'All Categories') %>
+<h2>Project Categories</h2>
+<% if @categories.any? %>
+  <% @categories.each do |category| %>
+    <ul class="ul-list-remove-padding">
+      <li><%= category.category_name %></li>
+      <%= link_to 'Delete', admin_category_path(category), class: 'btn btn-md btn-danger', method: :delete, data: { confirm: "Deleting this category, will as well deletes it's projects, please be cautious" } %>
+      <%= link_to 'Update Category', edit_admin_category_path(category), class: 'btn btn-md btn-info' %>
+   </ul>
+  <% end %>
+<% end %>

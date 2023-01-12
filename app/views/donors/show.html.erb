@@ -1,0 +1,65 @@
+<% provide(:title, "#{@donor.fullname}\'s profile".html_safe) %>
+<div class="container">
+  <div class="donor">
+    <div class="details">
+      <div class="avatar_container">
+        <% if @donor.profile_image? %>
+          <%= image_tag(@donor.image, :class=>"main-profile-pic") %>
+        <% else %>
+          <div class="avatar-initials" style= <%= "background-color:#{@donor.color};"%> ><%= @donor.initials %> </div>
+        <% end %>
+      </div>
+      <div>
+        <% if @donor.provider=="facebook" || @donor.championship %>
+          <h1 class="donor-fullname"><%= @donor.fullname %>  <span class="verified-tick glyphicon glyphicon-ok verified-tick-main"></span></h1>
+        <% else %>
+          <h1 class="donor-fullname"><%= @donor.fullname %></h1>
+        <% end %>
+        <div class="champ-verified">
+          <% if @donor.provider=="facebook" %>
+            <p>Facebook Verified <span class="verified-tick glyphicon glyphicon-ok""></span></p>
+          <% end %>
+          <% if @donor.championship %>
+            <p>Crowdfrica Verified <span class="verified-tick glyphicon glyphicon-ok""></span></p>
+          <% end %>
+        </div>
+       </div>
+    </div>
+	 </div>
+
+		  <div class="patients">
+        <% if @donor.projects.any? %>
+            <h1><%= "Here are all the projects #{@donor.first_name} has funded or co-funded" %> </h1>
+    	  <div class="row">
+
+    	        <% @donor.projects.distinct.each  do |project| %>
+                        <%= render 'campaigns/card',
+                                obj: project.campaign unless project.campaign.campaign_name == "crowdfrica campaign" ||
+                                project.campaign.campaign_name == "holiday campaign" %>
+                <% end %>
+            <% else %>
+                    <p> You are yet to support a project. <%= link_to "you can start from here", campaigns_path , class: "links"%> </p>
+    	   <% end %>
+       </div>
+     <div class="row">
+       <% if @donor.championship %>
+       <h1><%= "Here are all the projects #{@donor.first_name} has Championed" %> </h1>
+
+        <%= render 'campaigns/card', obj: @donor.championship.campaign %>
+        <div class="col-xs-12 col-sm-6 col-md-8 champ-profile-intro">
+          <p>As <%= @donor.championship.campaign.beneficiary.beneficiary_name %>'s <%= @donor.championship.relationship.downcase%> I'm working with Crowdfrica to raise funds and spread the word about <%= @donor.championship.campaign.beneficiary.beneficiary_name %>'s campaign.</p>
+          <p><%= @donor.championship.message%> </>
+
+        </div>
+      <% end %>
+    </div>
+    <% if @donor.championship && @donor == current_donor %>
+      <div class="row">
+        <div class="col-xs-12 col-sm-6 col-md-4 ">
+        <%= link_to "Withdraw Championship", championship_path(@donor.championship), method: :delete, data: { confirm: 'Are you sure you no longer want to be the Champion of this campaign?' }, class: "champ-control-btns center-champ-btns" %>
+        <%= link_to "Edit Championship", edit_championship_path(@donor.championship), class: "champ-control-btns center-champ-btns" %>
+      </div>
+    <% end %>
+  </div>
+</div>
+</div>

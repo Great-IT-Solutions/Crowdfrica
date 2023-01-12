@@ -1,0 +1,17 @@
+<div data-controller="social" class="margin-top-md d-flex blog-social-links-top">
+  <div class="blog-social-link">
+    <a data-action="social#openFacebookBox" data-url="<%= blog_facebook_url(@post) %>" class="btn btn-facebook-wide">
+      <%= image_tag "f_logo_RGB-White_58.png", class: "facebook-icon-smaller margin-right-sm" %> Share
+    </a>
+  </div>
+  <div class="blog-social-link">
+    <%= link_to "https://api.whatsapp.com/send?text=#{request.original_url}", target: "_blank", class: "btn btn-whatsapp-wide" do %>
+      <i class="fa fa-whatsapp margin-right-sm"></i><span> Share</span>
+    <% end %>
+  </div>
+  <div class="blog-social-link">
+    <a data-action="social#openTwitterBox" data-url="<%= blog_twitter_url(@post) %>" class="btn btn-twitter-wide">
+      <i class="fa fa-twitter margin-right-sm"></i> Share
+    </a>
+  </div>
+</div>

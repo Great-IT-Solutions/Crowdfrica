@@ -1,0 +1,21 @@
+<%= form_for @championship, url: { action: 'create' }  do |f| %>
+  <div class="col-lg-12 col-md-12 col-sm-12 padding-reset">
+    <%= f.label :campaign_id, 'Campaign id' %><br />
+    <%= f.text_field :campaign_id, required: true, class: "form-control"%>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 padding-reset">
+    <%= f.label :champion_id, 'Donor id' %><br />
+    <%= f.text_field :champion_id, required: true, class: "form-control"%>
+  </div>
+  <div class="form-group margin-top-sm  padding-reset">
+    <%= f.label :relationship, 'Relationship to beneficiary' %><br />
+    <%= f.select :relationship, ['Father', 'Mother', 'Grandparent', 'Aunt', 'Uncle', 'Cousin', 'Brother', 'Sister', 'Family', 'Friend', 'Colleague', 'Carer', 'Supporter'], { selected: 'Supporter'}, { class: 'form-control' }  %>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 padding-reset form-group margin-top-sm">
+    <%= f.label :message, 'Please write a message which will persuade people to donate' %><br />
+    <%= f.text_field :message, autofocus: true, required: true, class: "form-control"%>
+  </div>
+  <div class="col-lg-12 col-md-12 col-sm-12 padding-reset form-group form-group margin-top-sm">
+    <%= f.submit class:"btn btn-crwd-primary" %>
+  </div>
+<% end %>

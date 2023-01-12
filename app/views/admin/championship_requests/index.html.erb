@@ -1,0 +1,28 @@
+<div class="champ-index-titles">
+  <h1>Pending Championship Requests</h1>
+  <% if @championship_requests.count == 0 %>
+    <p>There are no pending requests</p>
+  <% end %>
+</div>
+<% @championship_requests.each do |request| %>
+  <div class="champ-index">
+    <p>Name of Applicant: <b><%= request.champion.fullname %></b></p>
+    <p>Email of Applicant: <%= request.champion.email %></p>
+    <p>Campaign Name: <%= request.campaign.campaign_name %></p>
+    <p>Beneficiary Name: <b><%= request.campaign.beneficiary.beneficiary_name %></b></p>
+    <p>Relationship: <%= request.relationship %></p>
+    <p>Reason for Request: <%= request.reason %></p>
+    <p>Message: <%= request.message %></p>
+    <p>Requested <%= time_ago_in_words(request.created_at) %> ago</p>
+    <%= link_to 'Edit Request', edit_admin_championship_request_path(request), class: 'champ-control-btns' %>
+    <%= form_for request, url: admin_championship_request_path(request) do |f| %>
+      <%= f.hidden_field :declined, value: true %>
+      <%= f.submit 'Decline Request', class: 'champ-control-btns' %>
+    <% end %>
+    <%= form_for Championship.new, url: { action: 'create', controller: 'championships' } do |f| %>
+      <%= f.hidden_field :championship_request_id, value: request.id %>
+      <%= f.submit 'Approve Request', class: 'champ-control-btns' %>
+    <% end %>
+  </div>
+<% end %>
+<%= will_paginate @championship_requests, renderer: BootstrapPagination::Rails, previous_label: 'Previous', next_label: 'Next' %>
